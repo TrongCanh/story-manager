@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom';
+import { useI18n } from '../../hooks/useI18n';
+import ThemeSwitcher from '../common/ThemeSwitcher';
+import LanguageSwitcher from '../common/LanguageSwitcher';
 
 /**
  * Header Component Props
@@ -13,14 +16,16 @@ interface HeaderProps {
 /**
  * Header Component
  * Displays the application header with title, navigation controls, and mobile menu toggle.
- * Theme and language switchers will be added in Phase 2.
+ * Includes theme and language switchers.
  *
  * @param {HeaderProps} props - Component props
- * @returns {JSX.Element} The header component
+ * @returns {React.ReactElement} The header component
  */
-function Header({ onMenuToggle, isMobileMenuOpen }: HeaderProps) {
+function Header({ onMenuToggle, isMobileMenuOpen }: HeaderProps): React.ReactElement {
+  const { t } = useI18n();
+
   return (
-    <header className="border-b border-gray-200 bg-white sticky top-0 z-50">
+    <header className="border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* App Title / Logo */}
         <div className="flex items-center gap-4">
@@ -28,7 +33,7 @@ function Header({ onMenuToggle, isMobileMenuOpen }: HeaderProps) {
           <button
             type="button"
             onClick={onMenuToggle}
-            className="lg:hidden p-2 text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
+            className="lg:hidden p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
           >
@@ -66,7 +71,7 @@ function Header({ onMenuToggle, isMobileMenuOpen }: HeaderProps) {
           </button>
 
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center dark:bg-blue-500">
               <svg
                 className="w-5 h-5 text-white"
                 fill="none"
@@ -83,58 +88,17 @@ function Header({ onMenuToggle, isMobileMenuOpen }: HeaderProps) {
               </svg>
             </div>
             <div>
-              <h1 className="text-lg font-semibold text-gray-900">Story Manager</h1>
+              <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                {t('app.title')}
+              </h1>
             </div>
           </Link>
         </div>
 
-        {/* Header Controls - Theme and Language Switchers (Phase 2) */}
+        {/* Header Controls - Theme and Language Switchers */}
         <div className="flex items-center gap-4">
-          {/* Theme Switcher Placeholder */}
-          <button
-            type="button"
-            className="p-2 text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-            aria-label="Toggle theme"
-            title="Theme switcher coming in Phase 2"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              />
-            </svg>
-          </button>
-
-          {/* Language Switcher Placeholder */}
-          <button
-            type="button"
-            className="p-2 text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-            aria-label="Switch language"
-            title="Language switcher coming in Phase 2"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-              />
-            </svg>
-          </button>
+          <ThemeSwitcher />
+          <LanguageSwitcher />
         </div>
       </div>
     </header>

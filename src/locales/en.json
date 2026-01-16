@@ -1,0 +1,57 @@
+{
+  "app": {
+    "title": "Story Manager"
+  },
+  "nav": {
+    "home": "Home",
+    "characters": "Characters",
+    "events": "Events",
+    "locations": "Locations",
+    "factions": "Factions",
+    "relationships": "Relationships",
+    "timeline": "Timeline"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "night": "Night",
+    "switch": "Switch theme"
+  },
+  "language": {
+    "en": "English",
+    "vi": "Vietnamese",
+    "switch": "Switch language"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "notFound": "Page not found",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "actions": "Actions"
+  },
+  "home": {
+    "title": "Welcome to Story Manager",
+    "subtitle": "Manage your story's characters, events, locations, factions, and relationships",
+    "features": {
+      "characters": "Manage your story characters with detailed profiles",
+      "events": "Track events across your story timeline",
+      "locations": "Organize all story locations",
+      "factions": "Create and manage story factions",
+      "relationships": "Define relationships between characters",
+      "timeline": "Visualize your story timeline"
+    }
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "message": "The page you're looking for doesn't exist.",
+    "goHome": "Go to Home"
+  }
+}

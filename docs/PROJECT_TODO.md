@@ -21,8 +21,8 @@ This is a professional story-management web application for novelists to manage:
   - Thiết kế ưu tiên máy tính để bàn với hỗ trợ responsive cho máy tính bảng/điện thoại
 - Multi-language support (English default, Vietnamese)
   - Hỗ trợ đa ngôn ngữ (Tiếng Anh mặc định, Tiếng Việt)
-- Three themes: Light, Dark, Night
-  - Ba chủ đề: Sáng, Tối, Đêm
+- Two themes: Light, Dark
+  - Hai chủ đề: Sáng, Tối
 - No backend - all data is mocked locally
   - Không backend - tất cả dữ liệu được mock cục bộ
 
@@ -154,8 +154,8 @@ src/
 ### Core Modules and Responsibilities / Các Module Cốt lõi và Trách nhiệm
 
 1. **Theme Module / Module Chủ đề**
-   - Manages Light/Dark/Night theme switching
-     - Quản lý chuyển đổi chủ đề Sáng/Tối/Đêm
+   - Manages Light/Dark theme switching
+     - Quản lý chuyển đổi chủ đề Sáng/Tối
    - Applies theme class to `<html>` element
      - Áp dụng class chủ đề cho phần tử `<html>`
    - Persists theme preference to localStorage
@@ -263,7 +263,7 @@ Display Updated UI / Hiển thị UI đã Cập nhật
 
 **Deliverables / Sản phẩm:**
 
-- ThemeContext with Light/Dark/Night themes / ThemeContext với các chủ đề Sáng/Tối/Đêm
+- ThemeContext with Light/Dark themes / ThemeContext với các chủ đề Sáng/Tối
 - I18nContext with EN/VI support / I18nContext với hỗ trợ EN/VI
 - en.json and vi.json translation files / Các tệp dịch en.json và vi.json
 - Theme and language switcher components / Các thành phần bộ chuyển đổi chủ đề và ngôn ngữ
@@ -463,17 +463,17 @@ Display Updated UI / Hiển thị UI đã Cập nhật
 
 ### Phase 2: Theme & i18n / Giai đoạn 2: Chủ đề & Quốc tế hóa
 
-- [ ] Create ThemeContext / Tạo ThemeContext
-- [ ] Create I18nContext / Tạo I18nContext
-- [ ] Configure Tailwind theme colors / Cấu hình màu chủ đề Tailwind
-- [ ] Create theme switcher component / Tạo thành phần bộ chuyển đổi chủ đề
-- [ ] Create language switcher component / Tạo thành phần bộ chuyển đổi ngôn ngữ
-- [ ] Create en.json translation file / Tạo tệp dịch en.json
-- [ ] Create vi.json translation file / Tạo tệp dịch vi.json
-- [ ] Implement theme persistence (localStorage) / Triển khai lưu trữ chủ đề (localStorage)
-- [ ] Implement language persistence (localStorage) / Triển khai lưu trữ ngôn ngữ (localStorage)
-- [ ] Test theme switching / Kiểm tra chuyển đổi chủ đề
-- [ ] Test language switching / Kiểm tra chuyển đổi ngôn ngữ
+- [x] Create ThemeContext / Tạo ThemeContext
+- [x] Create I18nContext / Tạo I18nContext
+- [x] Configure Tailwind theme colors / Cấu hình màu chủ đề Tailwind
+- [x] Create theme switcher component / Tạo thành phần bộ chuyển đổi chủ đề
+- [x] Create language switcher component / Tạo thành phần bộ chuyển đổi ngôn ngữ
+- [x] Create en.json translation file / Tạo tệp dịch en.json
+- [x] Create vi.json translation file / Tạo tệp dịch vi.json
+- [x] Implement theme persistence (localStorage) / Triển khai lưu trữ chủ đề (localStorage)
+- [x] Implement language persistence (localStorage) / Triển khai lưu trữ ngôn ngữ (localStorage)
+- [x] Test theme switching / Kiểm tra chuyển đổi chủ đề
+- [x] Test language switching / Kiểm tra chuyển đổi ngôn ngữ
 
 **Dependencies / Phụ thuộc:** Phase 1 / Giai đoạn 1
 **AI-Safe / An toàn cho AI:** All tasks are safe for AI automation / Tất cả công việc đều an toàn để AI tự động hóa

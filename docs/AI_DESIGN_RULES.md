@@ -14,7 +14,7 @@ TECH STACK:
 - TailwindCSS
 - No backend, mock data only
 - State is local (useState / Context)
-- Dark / Night theme supported
+- Dark / light theme supported
 - Multi-language: EN / VI
 
 DESIGN PRINCIPLES:

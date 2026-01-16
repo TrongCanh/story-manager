@@ -32,19 +32,6 @@ Tài liệu này định nghĩa các chủ đề màu sắc cho ứng dụng. C�
 
 ---
 
-## 3. Night Theme (Low contrast, eye-friendly) / Chủ đề Đêm (Độ tương phản thấp, thân thiện với mắt)
-
-- Background: slate-900
-  - Nền: slate-900
-- Text: slate-100, slate-300
-  - Văn bản: slate-100, slate-300
-- Border: slate-700
-  - Viền: slate-700
-- Primary: indigo-500
-  - Chính: indigo-500
-
----
-
 ## Rules / Quy tắc
 
 - Themes only change colors, never layout
@@ -52,9 +39,9 @@ Tài liệu này định nghĩa các chủ đề màu sắc cho ứng dụng. C�
 - Use Tailwind dark mode class strategy
   - Sử dụng chiến lược class dark mode của Tailwind
 - Avoid pure black (#000)
-  - Tránh màu đen tinh khiết (#000)
-- Night theme must reduce eye strain
-  - Chủ đề đêm phải giảm căng thẳng cho mắt
+  - Tránh màu đen tinh khi (#000)
+- Dark theme must reduce eye strain
+  - Chủ đề tối phải giảm căng thẳng cho mắt
 
 ---
 

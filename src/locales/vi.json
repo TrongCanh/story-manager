@@ -1,0 +1,57 @@
+{
+  "app": {
+    "title": "Quản lý Câu chuyện"
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "characters": "Nhân vật",
+    "events": "Sự kiện",
+    "locations": "Địa điểm",
+    "factions": "Phái",
+    "relationships": "Mối quan hệ",
+    "timeline": "Dòng thời gian"
+  },
+  "theme": {
+    "light": "Sáng",
+    "dark": "Tối",
+    "night": "Đêm",
+    "switch": "Đổi chủ đề"
+  },
+  "language": {
+    "en": "Tiếng Anh",
+    "vi": "Tiếng Việt",
+    "switch": "Đổi ngôn ngữ"
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Đã xảy ra lỗi",
+    "notFound": "Không tìm thấy trang",
+    "back": "Quay lại",
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "edit": "Sửa",
+    "create": "Tạo",
+    "search": "Tìm kiếm",
+    "filter": "Bộ lọc",
+    "sort": "Sắp xếp",
+    "actions": "Hành động"
+  },
+  "home": {
+    "title": "Chào mừng đến với Quản lý Câu chuyện",
+    "subtitle": "Quản lý nhân vật, sự kiện, địa điểm, phái và mối quan hệ trong câu chuyện của bạn",
+    "features": {
+      "characters": "Quản lý nhân vật câu chuyện với hồ sơ chi tiết",
+      "events": "Theo dõi sự kiện trên dòng thời gian câu chuyện",
+      "locations": "Tổ chức tất cả địa điểm câu chuyện",
+      "factions": "Tạo và quản lý các phái trong câu chuyện",
+      "relationships": "Định nghĩa mối quan hệ giữa các nhân vật",
+      "timeline": "Trực quan hóa dòng thời gian câu chuyện"
+    }
+  },
+  "notFound": {
+    "title": "404 - Không tìm thấy trang",
+    "message": "Trang bạn đang tìm kiếm không tồn tại.",
+    "goHome": "Về trang chủ"
+  }
+}

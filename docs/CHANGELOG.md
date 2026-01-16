@@ -141,7 +141,7 @@ Tài liệu này ghi lại tất cả các thay đổi được thực hiện tr
 **Phase 0: Foundation** đã hoàn thành thành công!
 
 ✅ Dự án React với TypeScript đã được khởi tạo
-✅ TailwindCSS v4 đã được cài đặt và cấu hình với 3 themes (light, dark, night)
+✅ TailwindCSS v4 đã được cài đặt và cấu hình với 3 themes (light, dark)
 ✅ ESLint và Prettier đã được cấu hình
 ✅ Cấu trúc thư mục dự án đã được tạo
 ✅ Git repository đã được khởi tạo
@@ -279,6 +279,166 @@ Tài liệu này ghi lại tất cả các thay đổi được thực hiện tr
 ✅ Navigation hoạt động với active state styling
 
 **Tiếp theo / Next Steps:** Phase 2: Theme & i18n
+
+---
+
+## Phase 2: Theme & i18n / Giai đoạn 2: Chủ đề & Đa ngôn ngữ
+
+**Date / Ngày:** 2026-01-16
+
+### User Request / Yêu cầu người dùng
+
+- Đọc các file trong thư mục docs để nắm được công việc
+- Triển khai Phase 2: Theme & i18n
+- Xóa hoàn toàn night theme khỏi dự án
+
+### What AI Did / Những gì AI đã làm
+
+#### 1. Theme Context Implementation / Triển khai Theme Context
+
+- ✅ Created [`src/context/ThemeContext.tsx`](../story-manager/src/context/ThemeContext.tsx):
+  - Theme type: `export type Theme = 'light' | 'dark'` (removed 'night')
+  - Theme toggle sequence: light → dark → light
+  - Theme persistence to localStorage
+  - System theme detection on initial load
+  - Theme class application to document element
+
+- ✅ Created [`src/hooks/useTheme.ts`](../story-manager/src/hooks/useTheme.ts):
+  - Custom hook to use ThemeContext
+  - Exports theme context with type definition
+
+#### 2. i18n Context Implementation / Triển khai i18n Context
+
+- ✅ Created [`src/context/I18nContext.tsx`](../story-manager/src/context/I18nContext.tsx):
+  - Language type: `export type Language = 'en' | 'vi'`
+  - Translation function using dot notation
+  - Language persistence to localStorage
+  - Default language: 'vi' (Vietnamese)
+  - Exports I18nContext and types
+
+- ✅ Created [`src/hooks/useI18n.ts`](../story-manager/src/hooks/useI18n.ts):
+  - Custom hook to use I18nContext
+  - Imports types from context
+
+- ✅ Created [`src/lib/i18n.ts`](../story-manager/src/lib/i18n.ts):
+  - Contains translations object with en and vi keys
+  - getNestedValue utility function for dot notation lookups
+
+#### 3. Translation Files / Tệp dịch thuật
+
+- ✅ Created [`src/locales/en.json`](../story-manager/src/locales/en.json):
+  - English translations for app, nav, theme, language, common, home, notFound
+
+- ✅ Created [`src/locales/vi.json`](../story-manager/src/locales/vi.json):
+  - Vietnamese translations for all keys
+
+#### 4. Theme Switcher Component / Thành phần Theme Switcher
+
+- ✅ Created [`src/components/common/ThemeSwitcher.tsx`](../story-manager/src/components/common/ThemeSwitcher.tsx):
+  - Removed night theme icon (star)
+  - Only shows Sun (light) and Moon (dark) icons
+  - Updated classes to remove `night:` prefix
+  - Uses useTheme hook
+
+#### 5. Language Switcher Component / Thành phần Language Switcher
+
+- ✅ Created [`src/components/common/LanguageSwitcher.tsx`](../story-manager/src/components/common/LanguageSwitcher.tsx):
+  - Removed `night:` classes from button
+  - Shows language code (EN/VI)
+  - Uses useI18n hook
+
+#### 6. Layout Components Integration / Tích hợp các thành phần Layout
+
+- ✅ Updated [`src/components/layout/Header.tsx`](../story-manager/src/components/layout/Header.tsx):
+  - Added useI18n hook and t() function
+  - Integrated ThemeSwitcher and LanguageSwitcher components
+  - Removed all `night:` classes
+  - Added dark theme classes: `dark:bg-gray-900`, `dark:border-gray-700`, `dark:text-gray-100`, `dark:text-gray-400`, `dark:text-gray-200`, `dark:bg-blue-500`
+
+- ✅ Updated [`src/components/layout/Sidebar.tsx`](../story-manager/src/components/layout/Sidebar.tsx):
+  - Added useI18n hook
+  - Updated nav items to use translation keys
+  - Added dark theme classes: `dark:bg-blue-900/20`, `dark:text-blue-400`, `dark:hover:bg-gray-800`
+
+- ✅ Updated [`src/components/layout/Layout.tsx`](../story-manager/src/components/layout/Layout.tsx):
+  - Added dark theme classes: `dark:bg-gray-900`, `dark:border-gray-700`
+  - Updated main content: `dark:bg-gray-900`
+
+#### 7. TailwindCSS Configuration Update / Cập nhật cấu hình TailwindCSS
+
+- ✅ Updated [`tailwind.config.js`](../story-manager/tailwind.config.js):
+  - Removed night theme colors (slate colors)
+  - Removed custom plugin for night variant
+  - Kept only gray and blue colors
+  - Removed `@tailwindcss/postcss` plugin import
+
+#### 8. CSS Styles Update / Cập nhật kiểu CSS
+
+- ✅ Updated [`src/index.css`](../story-manager/src/index.css):
+  - Removed `.night body` styles
+  - Kept `.dark body` styles
+
+#### 9. Main App Integration / Tích hợp vào App chính
+
+- ✅ Updated [`src/main.tsx`](../story-manager/src/main.tsx):
+  - Wrapped App with ThemeProvider and I18nProvider
+
+#### 10. Documentation Updates / Cập nhật tài liệu
+
+- ✅ Updated [`docs/THEME_RULES.md`](../story-manager/docs/THEME_RULES.md):
+  - Updated to only document Light and Dark themes
+  - Removed Night theme section
+
+- ✅ Updated [`docs/PROJECT_TODO.md`](../story-manager/docs/PROJECT_TODO.md):
+  - Updated Phase 2 description: "ThemeContext với các chủ đề Sáng/Tối" (removed Night)
+  - Updated Phase 2 deliverables to remove Night theme references
+  - Marked all Phase 2 tasks as completed [x]
+
+### Files Created / Các tệp đã tạo
+
+| File / Tệp                                                                                                  | Description / Mô tả                          |
+| ----------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| [`src/context/ThemeContext.tsx`](../story-manager/src/context/ThemeContext.tsx)                             | Theme context provider with light/dark modes |
+| [`src/hooks/useTheme.ts`](../story-manager/src/hooks/useTheme.ts)                                           | Custom hook for theme management             |
+| [`src/context/I18nContext.tsx`](../story-manager/src/context/I18nContext.tsx)                               | i18n context provider with EN/VI support     |
+| [`src/hooks/useI18n.ts`](../story-manager/src/hooks/useI18n.ts)                                             | Custom hook for i18n                         |
+| [`src/lib/i18n.ts`](../story-manager/src/lib/i18n.ts)                                                       | i18n utility functions and translations      |
+| [`src/locales/en.json`](../story-manager/src/locales/en.json)                                               | English translations                         |
+| [`src/locales/vi.json`](../story-manager/src/locales/vi.json)                                               | Vietnamese translations                      |
+| [`src/components/common/ThemeSwitcher.tsx`](../story-manager/src/components/common/ThemeSwitcher.tsx)       | Theme toggle button component                |
+| [`src/components/common/LanguageSwitcher.tsx`](../story-manager/src/components/common/LanguageSwitcher.tsx) | Language toggle button component             |
+
+### Files Modified / Các tệp đã sửa
+
+| File / Tệp                                                                                | Description / Mô tả                               |
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| [`src/components/layout/Header.tsx`](../story-manager/src/components/layout/Header.tsx)   | Added theme/i18n integration, removed night theme |
+| [`src/components/layout/Sidebar.tsx`](../story-manager/src/components/layout/Sidebar.tsx) | Added i18n support, removed night theme           |
+| [`src/components/layout/Layout.tsx`](../story-manager/src/components/layout/Layout.tsx)   | Added dark theme classes, removed night theme     |
+| [`tailwind.config.js`](../story-manager/tailwind.config.js)                               | Removed night theme colors and variant            |
+| [`src/index.css`](../story-manager/src/index.css)                                         | Removed night theme styles                        |
+| [`src/main.tsx`](../story-manager/src/main.tsx)                                           | Wrapped App with ThemeProvider and I18nProvider   |
+| [`docs/THEME_RULES.md`](../story-manager/docs/THEME_RULES.md)                             | Updated to remove Night theme documentation       |
+| [`docs/PROJECT_TODO.md`](../story-manager/docs/PROJECT_TODO.md)                           | Updated Phase 2 tasks and marked as completed     |
+
+### Final Result / Kết quả cuối cùng
+
+**Phase 2: Theme & i18n** đã hoàn thành thành công!
+
+✅ ThemeContext đã được tạo với 2 chủ đề (Sáng/Tối)
+✅ I18nContext đã được tạo với hỗ trợ EN/VI
+✅ ThemeSwitcher component đã được tạo
+✅ LanguageSwitcher component đã been created
+✅ Tất cả layout components đã được tích hợp theme và i18n
+✅ Night theme đã được xóa hoàn toàn khỏi dự án
+✅ TailwindCSS configuration đã được cập nhật
+✅ CSS styles đã được cập nhật
+✅ Tài liệu đã được cập nhật để phản ánh các thay đổi
+✅ Theme và language preferences được lưu vào localStorage
+
+**Lưu ý / Note:** Night theme đã được xóa hoàn toàn theo yêu cầu của người dùng. Chỉ còn 2 theme: Light và Dark.
+
+**Tiếp theo / Next Steps:** Phase 3: Domain Data Structure
 
 ---
 

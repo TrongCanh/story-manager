@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+/* Override dark mode to use class-based instead of prefers-color-scheme */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Base styles */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -20,13 +23,14 @@ body {
 }
 
 /* Dark theme */
-.dark body {
-  background-color: #111827;
-  color: #f3f4f6;
+@media (prefers-color-scheme: dark) {
+  html:not(.light) body {
+    background-color: #111827;
+    color: #f3f4f6;
+  }
 }
 
-/* Night theme */
-.night body {
-  background-color: #0f172a;
-  color: #e2e8f0;
+html.dark body {
+  background-color: #111827;
+  color: #f3f4f6;
 }
