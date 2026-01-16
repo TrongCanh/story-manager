@@ -1,83 +1,58 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import HomePage from './app/HomePage';
+import CharactersPage from './app/characters/CharactersPage';
+import EventsPage from './app/events/EventsPage';
+import LocationsPage from './app/locations/LocationsPage';
+import FactionsPage from './app/factions/FactionsPage';
+import RelationshipsPage from './app/relationships/RelationshipsPage';
+import TimelinePage from './app/timeline/TimelinePage';
+import NotFoundPage from './app/NotFoundPage';
+
+/**
+ * App Component
+ * Main application component with React Router configuration.
+ * Sets up all routes for the Story Manager application.
+ *
+ * Route Structure:
+ * - /: HomePage (dashboard with feature overview)
+ * - /characters: CharactersPage (Phase 4)
+ * - /events: EventsPage (Phase 5)
+ * - /locations: LocationsPage (Phase 6)
+ * - /factions: FactionsPage (Phase 7)
+ * - /relationships: RelationshipsPage (Phase 8)
+ * - /timeline: TimelinePage (Phase 9)
+ * - *: NotFoundPage (404)
+ *
+ * All routes are wrapped in the Layout component which provides:
+ * - Header with app title and controls
+ * - Sidebar navigation
+ * - Centered main content area (max-w-6xl)
+ */
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
-      <div className="max-w-6xl mx-auto px-6 py-8">
-        {/* Header */}
-        <header className="border-b border-gray-200 pb-6 mb-8">
-          <h1 className="text-2xl font-semibold text-gray-900">Story Manager</h1>
-          <p className="text-sm text-gray-700 mt-2">
-            Professional story-management web application for novelists
-          </p>
-        </header>
+    <BrowserRouter>
+      <Routes>
+        {/* All routes share the same Layout component */}
+        <Route path="/" element={<Layout />}>
+          {/* Home / Dashboard */}
+          <Route index element={<HomePage />} />
 
-        {/* Main Content */}
-        <main className="space-y-6">
-          {/* Feature Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <h2 className="text-lg font-medium text-gray-900 mb-2">Characters</h2>
-              <p className="text-sm text-gray-700">
-                Manage your story characters with time-based attributes
-              </p>
-            </div>
+          {/* Entity Management Pages */}
+          <Route path="characters" element={<CharactersPage />} />
+          <Route path="events" element={<EventsPage />} />
+          <Route path="locations" element={<LocationsPage />} />
+          <Route path="factions" element={<FactionsPage />} />
+          <Route path="relationships" element={<RelationshipsPage />} />
 
-            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <h2 className="text-lg font-medium text-gray-900 mb-2">Events</h2>
-              <p className="text-sm text-gray-700">
-                Track story events across your narrative timeline
-              </p>
-            </div>
+          {/* Timeline Page */}
+          <Route path="timeline" element={<TimelinePage />} />
 
-            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <h2 className="text-lg font-medium text-gray-900 mb-2">Locations</h2>
-              <p className="text-sm text-gray-700">Organize story locations and settings</p>
-            </div>
-
-            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <h2 className="text-lg font-medium text-gray-900 mb-2">Factions</h2>
-              <p className="text-sm text-gray-700">Manage factions and their members</p>
-            </div>
-
-            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <h2 className="text-lg font-medium text-gray-900 mb-2">Relationships</h2>
-              <p className="text-sm text-gray-700">Track relationships between entities</p>
-            </div>
-
-            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-              <h2 className="text-lg font-medium text-gray-900 mb-2">Timeline</h2>
-              <p className="text-sm text-gray-700">Visualize and navigate your story timeline</p>
-            </div>
-          </div>
-
-          {/* Status Section */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-            <h2 className="text-lg font-medium text-gray-900 mb-4">Phase 0: Foundation</h2>
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                <span className="text-sm text-gray-700">React + TypeScript + Vite</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                <span className="text-sm text-gray-700">TailwindCSS v4 configured</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                <span className="text-sm text-gray-700">ESLint + Prettier configured</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                <span className="text-sm text-gray-700">Project structure created</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                <span className="text-sm text-gray-700">Git repository initialized</span>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-    </div>
+          {/* 404 - Catch all unmatched routes */}
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
