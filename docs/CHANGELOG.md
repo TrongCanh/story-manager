@@ -442,4 +442,153 @@ Tài liệu này ghi lại tất cả các thay đổi được thực hiện tr
 
 ---
 
+## Phase 3: Domain Data Structure / Giai đoạn 3: Cấu trúc Dữ liệu Domain
+
+**Date / Ngày:** 2026-01-16
+
+### User Request / Yêu cầu người dùng
+
+- Đọc các file trong thư mục docs để nắm được công việc
+- Triển khai Phase 3: Domain Data Structure
+
+### What AI Did / Những gì AI đã làm
+
+#### 1. Type Definitions / Định nghĩa Kiểu
+
+- ✅ Created [`src/types/common.ts`](../story-manager/src/types/common.ts):
+  - TimeRange interface for versioned attributes
+  - BaseEntity interface with common properties
+
+- ✅ Created [`src/types/character.ts`](../story-manager/src/types/character.ts):
+  - Character interface extending BaseEntity
+  - CharacterAttribute interface with time-based versioning
+  - Character-specific properties (role, age, gender, appearance, personality, background, goals, flaws, skills, notes)
+
+- ✅ Created [`src/types/event.ts`](../story-manager/src/types/event.ts):
+  - Event interface extending BaseEntity
+  - Event-specific properties (timestamp, locationId, eventType, importance, participants, outcome, impact)
+
+- ✅ Created [`src/types/location.ts`](../story-manager/src/types/location.ts):
+  - Location interface extending BaseEntity
+  - LocationAttribute interface with time-based versioning
+  - Location-specific properties (locationType, climate, geography, population, culture, economy, government, notes)
+
+- ✅ Created [`src/types/faction.ts`](../story-manager/src/types/faction.ts):
+  - Faction interface extending BaseEntity
+  - FactionAttribute interface with time-based versioning
+  - Faction-specific properties (factionType, ideology, goals, resources, influence, members, leader, notes)
+
+- ✅ Created [`src/types/relationship.ts`](../story-manager/src/types/relationship.ts):
+  - Relationship interface extending BaseEntity
+  - RelationshipDetail interface with time-based versioning
+  - Relationship-specific properties (entity1Id, entity2Id, relationshipType, description, status, strength)
+
+- ✅ Created [`src/types/timeline.ts`](../story-manager/src/types/timeline.ts):
+  - Timeline interface with events array
+  - TimelineEvent interface for timeline events
+  - Timeline-specific properties (id, name, startDate, endDate, events)
+
+- ✅ Created [`src/types/index.ts`](../story-manager/src/types/index.ts):
+  - Exports all types from individual type files
+  - Entity union type for all entities
+  - EntityType constants and EntityTypeValue type
+
+#### 2. Mock Data / Dữ liệu Mock
+
+- ✅ Created [`src/lib/mockData.ts`](../story-manager/src/lib/mockData.ts):
+  - Mock data for 4 characters with time-based attributes
+  - Mock data for 5 events with timestamps and participants
+  - Mock data for 4 locations with time-based attributes
+  - Mock data for 2 factions (Shadow Faction, The Resistance)
+  - Mock data for 4 relationships between characters
+  - Mock timeline with 6 timeline events
+  - All data follows the time-based versioning pattern
+
+#### 3. Time-based Data Filtering / Lọc Dữ liệu dựa trên Thời gian
+
+- ✅ Created [`src/lib/timeFilter.ts`](../story-manager/src/lib/timeFilter.ts):
+  - isTimeRangeActive() - Check if time range is active at given time
+  - getActiveCharacterAttribute() - Get active character attribute version
+  - getActiveLocationAttribute() - Get active location attribute version
+  - getActiveFactionAttribute() - Get active faction attribute version
+  - getActiveRelationshipDetail() - Get active relationship detail version
+  - filterCharactersByTime() - Filter characters by time
+  - filterLocationsByTime() - Filter locations by time
+  - filterFactionsByTime() - Filter factions by time
+  - filterRelationshipsByTime() - Filter relationships by time
+  - filterEventsByTime() - Filter events by time
+  - getEventsInRange() - Get events within time range
+  - formatDate() - Format date for display
+  - formatDateTime() - Format date and time for display
+  - compareTimes() - Compare two time strings
+  - getEarliestTime() - Get earliest time from array
+  - getLatestTime() - Get latest time from array
+
+#### 4. Data Context / Ngữ cảnh Dữ liệu
+
+- ✅ Created [`src/context/DataContext.tsx`](../story-manager/src/context/DataContext.tsx):
+  - DataContextValue interface with all data and time state
+  - DataProvider component with:
+    - Current effective time state (currentTime)
+    - Time navigation history (history, historyIndex)
+    - Time navigation functions (goBack, goForward)
+    - All entity data (characters, events, locations, factions, relationships)
+    - Active entity data filtered by current time
+    - Helper functions to get entities with active attributes
+  - Exports DataContext and DataContextValue type
+
+#### 5. Data Hooks / Hooks Dữ liệu
+
+- ✅ Created [`src/hooks/useData.ts`](../story-manager/src/hooks/useData.ts):
+  - useDataContext() - Hook to access data context
+  - useCurrentTime() - Hook to access current time state
+
+#### 6. Main App Integration / Tích hợp vào App chính
+
+- ✅ Updated [`src/main.tsx`](../story-manager/src/main.tsx):
+  - Wrapped App with DataProvider
+  - DataProvider wraps ThemeProvider and I18nProvider
+
+### Files Created / Các tệp đã tạo
+
+| File / Tệp                                                                    | Description / Mô tả                  |
+| ----------------------------------------------------------------------------- | ------------------------------------ |
+| [`src/types/common.ts`](../story-manager/src/types/common.ts)                 | Common types (TimeRange, BaseEntity) |
+| [`src/types/character.ts`](../story-manager/src/types/character.ts)           | Character types                      |
+| [`src/types/event.ts`](../story-manager/src/types/event.ts)                   | Event types                          |
+| [`src/types/location.ts`](../story-manager/src/types/location.ts)             | Location types                       |
+| [`src/types/faction.ts`](../story-manager/src/types/faction.ts)               | Faction types                        |
+| [`src/types/relationship.ts`](../story-manager/src/types/relationship.ts)     | Relationship types                   |
+| [`src/types/timeline.ts`](../story-manager/src/types/timeline.ts)             | Timeline types                       |
+| [`src/types/index.ts`](../story-manager/src/types/index.ts)                   | Type exports and utilities           |
+| [`src/lib/mockData.ts`](../story-manager/src/lib/mockData.ts)                 | Mock data for all entities           |
+| [`src/lib/timeFilter.ts`](../story-manager/src/lib/timeFilter.ts)             | Time-based filtering utilities       |
+| [`src/context/DataContext.tsx`](../story-manager/src/context/DataContext.tsx) | Data context provider                |
+| [`src/hooks/useData.ts`](../story-manager/src/hooks/useData.ts)               | Data context hooks                   |
+
+### Files Modified / Các tệp đã sửa
+
+| File / Tệp                                      | Description / Mô tả        |
+| ----------------------------------------------- | -------------------------- |
+| [`src/main.tsx`](../story-manager/src/main.tsx) | Added DataProvider wrapper |
+
+### Final Result / Kết quả cuối cùng
+
+**Phase 3: Domain Data Structure** đã hoàn thành thành công!
+
+✅ TypeScript types cho tất cả thực thể đã được định nghĩa (Character, Event, Location, Faction, Relationship, Timeline)
+✅ Dữ liệu mock cho tất cả thực thể đã được tạo với thuộc tính dựa trên thời gian
+✅ Tiện ích lọc dữ liệu dựa trên thời gian đã được triển khai
+✅ DataContext để quản lý trạng thái đã được tạo
+✅ Quản lý trạng thái thời gian hiệu lực hiện tại đã được triển khai
+✅ Hooks để truy cập dữ liệu đã được tạo
+✅ DataProvider đã được tích hợp vào main.tsx
+✅ Cấu trúc types được chia thành các file nhỏ theo yêu cầu người dùng
+
+**Lưu ý / Note:** Types được chia thành các file riêng biệt (common.ts, character.ts, event.ts, location.ts, faction.ts, relationship.ts, timeline.ts, index.ts) để dễ quản lý và bảo trì.
+
+**Tiếp theo / Next Steps:** Phase 4: Character Module
+
+---
+
 _Last updated: 2026-01-16_
