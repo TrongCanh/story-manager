@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { I18nContext, type Language, type TranslationKey } from '../context/I18nContext';
+import { I18nContext, type Language } from '../context/I18nContext';
+import type { TranslationKey } from '../types/i18n';
 
 /**
  * Hook to use I18n context

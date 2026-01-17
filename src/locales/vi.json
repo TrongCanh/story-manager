@@ -35,7 +35,9 @@
     "search": "Tìm kiếm",
     "filter": "Bộ lọc",
     "sort": "Sắp xếp",
-    "actions": "Hành động"
+    "actions": "Hành động",
+    "name": "Tên",
+    "description": "Mô tả"
   },
   "home": {
     "title": "Chào mừng đến với Quản lý Câu chuyện",
@@ -48,6 +50,39 @@
       "relationships": "Định nghĩa mối quan hệ giữa các nhân vật",
       "timeline": "Trực quan hóa dòng thời gian câu chuyện"
     }
+  },
+  "characters": {
+    "title": "Nhân vật",
+    "subtitle": "Quản lý Nhân vật",
+    "description": "Quản lý nhân vật câu chuyện với các thuộc tính dựa trên thời gian. Theo dõi vai trò, mối quan hệ và sự phát triển của nhân vật trên dòng thời gian kể chuyện.",
+    "list": "Danh sách Nhân vật",
+    "details": "Chi tiết Nhân vật",
+    "create": "Tạo Nhân vật",
+    "edit": "Sửa Nhân vật",
+    "delete": "Xóa Nhân vật",
+    "search": "Tìm kiếm nhân vật...",
+    "noCharacters": "Không tìm thấy nhân vật",
+    "attributes": {
+      "role": "Vai trò",
+      "age": "Tuổi",
+      "gender": "Giới tính",
+      "appearance": "Ngoại hình",
+      "personality": "Tính cách",
+      "background": "Tiền cảnh",
+      "goals": "Mục tiêu",
+      "flaws": "Khuyết điểm",
+      "skills": "Kỹ năng",
+      "notes": "Ghi chú"
+    },
+    "relationships": "Mối quan hệ",
+    "timeRange": "Phạm vi thời gian",
+    "from": "Từ",
+    "to": "Đến",
+    "current": "Hiện tại",
+    "noRelationships": "Không tìm thấy mối quan hệ",
+    "confirmDelete": "Bạn có chắc chắn muốn xóa nhân vật này không?",
+    "cancel": "Hủy",
+    "confirm": "Xác nhận"
   },
   "notFound": {
     "title": "404 - Không tìm thấy trang",

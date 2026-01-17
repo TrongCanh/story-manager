@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useI18n } from '../../hooks/useI18n';
+import type { TranslationKey } from '../../types/i18n';
 import { Users, Calendar, MapPin, Building2, Link2, Clock } from 'lucide-react';
 
 /**
@@ -10,7 +11,7 @@ interface NavItem {
   /** Route path */
   path: string;
   /** Translation key for label */
-  labelKey: string;
+  labelKey: TranslationKey;
   /** Icon component */
   icon: React.ReactNode;
 }

@@ -1,15 +1,11 @@
 import { createContext, useState, useEffect, type ReactNode } from 'react';
 import { translations, getNestedValue } from '../lib/i18n';
+import type { TranslationKey } from '../types/i18n';
 
 /**
  * Supported languages
  */
 export type Language = 'en' | 'vi';
-
-/**
- * Translation key type (nested dot notation)
- */
-export type TranslationKey = string;
 
 /**
  * I18n Context Interface

@@ -862,4 +862,265 @@ Tài liệu này ghi lại tất cả các thay đổi được thực hiện tr
 
 ---
 
+## Phase 4: Character Module / Giai đoạn 4: Module Nhân vật
+
+**Date / Ngày:** 2026-01-17
+
+### User Request / Yêu cầu người dùng
+
+- Đọc các file trong thư mục docs để nắm được công việc
+- Triển khai Phase 4: Character Module
+- Code phải tương thích với code trước đó, đặc biệt là đồng bộ về mặt giao diện
+
+### What AI Did / Những gì AI đã làm
+
+#### 1. Translation Files / Các tệp dịch thuật
+
+- ✅ Updated [`src/locales/en.json`](../story-manager/src/locales/en.json) with character-related keys:
+  - `characters.title`, `characters.subtitle`, `characters.description`
+  - `characters.list`, `characters.details`, `characters.create`, `characters.edit`, `characters.delete`
+  - `characters.search`, `characters.noCharacters`
+  - `characters.attributes.role`, `characters.attributes.age`, `characters.attributes.gender`
+  - `characters.attributes.appearance`, `characters.attributes.personality`, `characters.attributes.background`
+  - `characters.attributes.goals`, `characters.attributes.flaws`, `characters.attributes.skills`
+  - `characters.attributes.notes`, `characters.relationships`, `characters.timeRange`
+  - `characters.from`, `characters.to`, `characters.current`, `characters.noRelationships`
+  - `characters.confirmDelete`, `characters.cancel`, `characters.confirm`
+
+- ✅ Updated [`src/locales/vi.json`](../story-manager/src/locales/vi.json) with Vietnamese translations for all character keys
+
+#### 2. Domain Components / Các thành phần Domain
+
+- ✅ Created [`src/components/domain/character/CharacterTable.tsx`](../story-manager/src/components/domain/character/CharacterTable.tsx):
+  - Reusable table component for displaying characters
+  - Columns: Name, Description, Role, Actions
+  - Edit and Delete buttons for each character
+  - Click on row to view character details
+  - Theme-aware colors (emerald for light, blue for dark)
+
+- ✅ Created [`src/components/domain/character/CharacterRelationships.tsx`](../story-manager/src/components/domain/character/CharacterRelationships.tsx):
+  - Component for displaying character relationships
+  - Shows relationship name, type, description
+  - Visual strength indicator (progress bar)
+  - Status badge (active/inactive)
+  - Theme-aware colors
+
+- ✅ Created [`src/components/domain/character/CharacterForm.tsx`](../story-manager/src/components/domain/character/CharacterForm.tsx):
+  - Form component for creating/editing characters
+  - Vertical form layout with labels above inputs
+  - All character attributes: name, description, role, age, gender, appearance, personality, background, goals, flaws, skills, notes
+  - Time range inputs (from, to)
+  - Save and Cancel buttons
+  - Theme-aware colors and focus states
+
+#### 3. Page Components / Các thành phần Trang
+
+- ✅ Updated [`src/app/characters/CharactersPage.tsx`](../story-manager/src/app/characters/CharactersPage.tsx):
+  - Character list page with search functionality
+  - Search bar for filtering characters
+  - Create button for new characters
+  - Uses CharacterTable component
+  - Empty state when no characters found
+  - Theme-aware colors
+
+- ✅ Created [`src/app/characters/CharacterDetailPage.tsx`](../story-manager/src/app/characters/CharacterDetailPage.tsx):
+  - Character detail page showing full character information
+  - Character name and description header
+  - Character attributes grid (role, age, gender, appearance, personality, background, goals, flaws, skills, notes)
+  - Time range information
+  - Back, Edit, and Delete buttons
+  - CharacterRelationships component integration
+  - Character not found state
+
+- ✅ Created [`src/app/characters/CharacterCreatePage.tsx`](../story-manager/src/app/characters/CharacterCreatePage.tsx):
+  - Page for creating new characters
+  - Uses CharacterForm component
+  - Back navigation on cancel
+
+- ✅ Created [`src/app/characters/CharacterEditPage.tsx`](../story-manager/src/app/characters/CharacterEditPage.tsx):
+  - Page for editing existing characters
+  - Uses CharacterForm component with pre-filled data
+  - Character not found state
+
+#### 4. Routing Configuration / Cấu hình Routing
+
+- ✅ Updated [`src/App.tsx`](../story-manager/src/App.tsx) with new character routes:
+  - `/characters/create` - CharacterCreatePage
+  - `/characters/:id` - CharacterDetailPage
+  - `/characters/:id/edit` - CharacterEditPage
+
+#### 5. Design Compliance / Tuân thủ Quy tắc Thiết kế
+
+All components follow project design guidelines:
+
+- ✅ Centered layout with max-w-6xl, mx-auto, px-6
+- ✅ Consistent typography: text-2xl font-semibold (page title), text-lg font-medium (section title), text-sm text-gray-700 (body)
+- ✅ Emerald/Teal/Amber color palette for light mode
+- ✅ Blue-500 color for dark mode
+- ✅ Cards with bg-white border-emerald-100 rounded-xl p-6 (light) / dark:bg-gray-800 dark:border-gray-700 (dark)
+- ✅ Vertical forms with labels above inputs
+- ✅ Tables for lists
+- ✅ Minimal interactions (hover, focus only when helpful)
+
+### Files Created / Các tệp đã tạo
+
+| File / Tệp                                                                                                                                  | Description / Mô tả                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [`src/components/domain/character/CharacterTable.tsx`](../story-manager/src/components/domain/character/CharacterTable.tsx)                 | Reusable character table component / Thành phần bảng nhân vật tái sử dụng |
+| [`src/components/domain/character/CharacterRelationships.tsx`](../story-manager/src/components/domain/character/CharacterRelationships.tsx) | Character relationships component / Thành phần mối quan hệ nhân vật       |
+| [`src/components/domain/character/CharacterForm.tsx`](../story-manager/src/components/domain/character/CharacterForm.tsx)                   | Character form component / Thành phần biểu mẫu nhân vật                   |
+| [`src/app/characters/CharactersPage.tsx`](../story-manager/src/app/characters/CharactersPage.tsx)                                           | Character list page / Trang danh sách nhân vật                            |
+| [`src/app/characters/CharacterDetailPage.tsx`](../story-manager/src/app/characters/CharacterDetailPage.tsx)                                 | Character detail page / Trang chi tiết nhân vật                           |
+| [`src/app/characters/CharacterCreatePage.tsx`](../story-manager/src/app/characters/CharacterCreatePage.tsx)                                 | Character create page / Trang tạo nhân vật                                |
+| [`src/app/characters/CharacterEditPage.tsx`](../story-manager/src/app/characters/CharacterEditPage.tsx)                                     | Character edit page / Trang sửa nhân vật                                  |
+
+### Files Modified / Các tệp đã sửa
+
+| File / Tệp                                                    | Description / Mô tả                               |
+| ------------------------------------------------------------- | ------------------------------------------------- |
+| [`src/locales/en.json`](../story-manager/src/locales/en.json) | Added character translations / Thêm dịch nhân vật |
+| [`src/locales/vi.json`](../story-manager/src/locales/vi.json) | Added character translations / Thêm dịch nhân vật |
+| [`src/App.tsx`](../story-manager/src/App.tsx)                 | Added character routes / Thêm routes nhân vật     |
+
+### Final Result / Kết quả cuối cùng
+
+**Phase 4: Character Module** đã hoàn thành thành công!
+
+✅ Translation files đã được cập nhật với các key dịch nhân vật
+✅ Các thành phần domain nhân vật đã được tạo (CharacterTable, CharacterRelationships, CharacterForm)
+✅ Các thành phần trang nhân vật đã được tạo và cập nhật (CharactersPage, CharacterDetailPage, CharacterCreatePage, CharacterEditPage)
+✅ Routing đã được cấu hình cho các trang nhân vật
+✅ Code tuân thủ các quy tắc thiết kế dự án (màu sắc, typography, spacing, bố cục)
+✅ Giao diện tương thích với code hiện có
+
+**Lưu ý / Note:**
+
+- Tất cả thành phần đều tuân thủ các quy tắc thiết kế (DESIGN_RULES.md, THEME_RULES.md)
+- Light mode sử dụng bảng màu Emerald/Teal/Amber
+- Dark mode sử dụng màu Blue-500
+- Form theo chiều dọc với nhãn ở trên input
+- Bảng được sử dụng cho danh sách nhân vật
+
+**Tiếp theo / Next Steps:** Phase 5: Event Module
+
+---
+
+## Phase 2.1: I18n Type-Safe Implementation / Giai đoạn 2.1: Triển khai Type-Safe cho I18n
+
+**Date / Ngày:** 2026-01-17
+
+### User Request / Yêu cầu người dùng
+
+- Bổ sung các từ chưa được khai báo trong locale files (ví dụ: common.name, common.description)
+- Tìm cách để chỉ có thể sử dụng những từ đã được khai báo (type-safe)
+- Cập nhật changelog và các file todo
+- Ghi lại các lưu ý khi viết code, đặc biệt là i18n để lần sau có thể thao tác đúng
+
+### What AI Did / Những gì AI đã làm
+
+#### 1. Translation Keys Completion / Hoàn thành Các Key Dịch
+
+- ✅ Updated [`src/locales/en.json`](../story-manager/src/locales/en.json) with missing keys:
+  - Added `common.name`: "Name"
+  - Added `common.description`: "Description"
+- ✅ Updated [`src/locales/vi.json`](../story-manager/src/locales/vi.json) with Vietnamese translations:
+  - Added `common.name`: "Tên"
+  - Added `common.description`: "Mô tả"
+
+#### 2. Type-Safe Translation Key Implementation / Triển khai Key Dịch Type-Safe
+
+- ✅ Created [`src/types/i18n.ts`](../story-manager/src/types/i18n.ts):
+  - Defined `TranslationKey` type with all valid translation keys as union type
+  - Included all keys: app._, nav._, theme._, language._, common._, home._, characters._, notFound._
+  - Created `isValidTranslationKey()` type guard function for runtime validation
+  - All keys are now type-safe - TypeScript will catch invalid keys at compile time
+
+#### 3. I18n System Refactor / Tái cấu hình Hệ thống I18n
+
+- ✅ Updated [`src/lib/i18n.ts`](../story-manager/src/lib/i18n.ts):
+  - Removed hardcoded translations object
+  - Changed to import translations from JSON files (`en.json`, `vi.json`)
+  - This ensures translations are always in sync with locale files
+  - Reduced code duplication
+
+- ✅ Updated [`src/context/I18nContext.tsx`](../story-manager/src/context/I18nContext.tsx):
+  - Imported `TranslationKey` type from `src/types/i18n.ts`
+  - Removed local `TranslationKey` type definition
+  - Now uses centralized type-safe translation keys
+
+- ✅ Updated [`src/hooks/useI18n.ts`](../story-manager/src/hooks/useI18n.ts):
+  - Imported `TranslationKey` type from `src/types/i18n.ts`
+  - Ensures type safety across all i18n usage
+
+#### 4. Component Updates for Type Safety / Cập nhật Thành phần cho Type Safety
+
+- ✅ Updated [`src/components/layout/Sidebar.tsx`](../story-manager/src/components/layout/Sidebar.tsx):
+  - Changed `NavItem.labelKey` type from `string` to `TranslationKey`
+  - Ensures only valid translation keys can be used in navigation
+
+#### 5. TypeScript Configuration Update / Cập nhật Cấu hình TypeScript
+
+- ✅ Updated [`tsconfig.app.json`](../story-manager/tsconfig.app.json):
+  - Added `"resolveJsonModule": true` to enable JSON imports
+  - Added `"esModuleInterop": true` for proper JSON module handling
+  - Allows direct import of `.json` files in TypeScript
+
+#### 6. I18n Helper Utilities / Tiện ích Trợ giúp I18n
+
+- ✅ Created [`src/lib/i18nHelper.ts`](../story-manager/src/lib/i18nHelper.ts):
+  - `validateTranslationKey(key: string): TranslationKey` - Validates and returns type-safe key
+  - `getAllTranslationKeys(): readonly TranslationKey[]` - Returns all available translation keys
+  - `hasTranslationKey(key: string): key is TranslationKey` - Type guard to check if key exists
+  - `getKeysByNamespace(namespace: string): TranslationKey[]` - Get keys by namespace
+  - All functions include JSDoc comments with examples in both English and Vietnamese
+
+#### 7. Documentation Updates / Cập nhật Tài liệu
+
+- ✅ Updated [`docs/I18N_RULES.md`](../story-manager/docs/I18N_RULES.md):
+  - Added rules for type-safe translation keys
+  - Added guidelines for adding new translation keys
+  - Added workflow for maintaining translation key consistency
+
+### Files Created / Các tệp đã tạo
+
+| File / Tệp                                                        | Description / Mô tả                             |
+| ----------------------------------------------------------------- | ----------------------------------------------- |
+| [`src/types/i18n.ts`](../story-manager/src/types/i18n.ts)         | Type-safe translation key definitions           |
+| [`src/lib/i18nHelper.ts`](../story-manager/src/lib/i18nHelper.ts) | I18n helper utilities with validation functions |
+
+### Files Modified / Các tệp đã sửa
+
+| File / Tệp                                                                                | Description / Mô tả                 |
+| ----------------------------------------------------------------------------------------- | ----------------------------------- |
+| [`src/locales/en.json`](../story-manager/src/locales/en.json)                             | Added missing common keys           |
+| [`src/locales/vi.json`](../story-manager/src/locales/vi.json)                             | Added missing common keys           |
+| [`src/lib/i18n.ts`](../story-manager/src/lib/i18n.ts)                                     | Import translations from JSON files |
+| [`src/context/I18nContext.tsx`](../story-manager/src/context/I18nContext.tsx)             | Import TranslationKey type          |
+| [`src/hooks/useI18n.ts`](../story-manager/src/hooks/useI18n.ts)                           | Import TranslationKey type          |
+| [`src/components/layout/Sidebar.tsx`](../story-manager/src/components/layout/Sidebar.tsx) | Use type-safe TranslationKey        |
+| [`tsconfig.app.json`](../story-manager/tsconfig.app.json)                                 | Enable JSON module imports          |
+| [`docs/I18N_RULES.md`](../story-manager/docs/I18N_RULES.md)                               | Added type-safe i18n guidelines     |
+
+### Final Result / Kết quả cuối cùng
+
+**Phase 2.1: I18n Type-Safe Implementation** đã hoàn thành thành công!
+
+✅ Các key dịch bị thiếu đã được bổ sung vào cả en.json và vi.json
+✅ Type-safe TranslationKey đã được tạo để đảm bảo chỉ sử dụng các key hợp lệ
+✅ Hệ thống i18n đã được tái cấu hình để import từ file JSON thay vì hardcode
+✅ TypeScript sẽ bắt lỗi các key không hợp lệ tại thời điểm biên dịch
+✅ Các helper utilities đã được tạo để hỗ trợ việc quản lý và kiểm tra translation keys
+✅ Tài liệu I18N_RULES.md đã được cập nhật với các quy tắc mới
+✅ Changelog và TODO đã được cập nhật
+
+**Lưu ý / Note:**
+
+- Bây giờ khi sử dụng `t()` function, TypeScript sẽ chỉ cho phép các key đã được khai báo trong `src/types/i18n.ts`
+- Nếu bạn thêm key mới vào locale files, bạn cũng phải cập nhật `src/types/i18n.ts`
+- Sử dụng helper functions từ `src/lib/i18nHelper.ts` để kiểm tra và validate translation keys
+
+**Tiếp theo / Next Steps:** Phase 5: Event Module
+
+---
+
 _Last updated: 2026-01-17_

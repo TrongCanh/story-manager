@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import HomePage from './app/HomePage';
 import CharactersPage from './app/characters/CharactersPage';
+import CharacterDetailPage from './app/characters/CharacterDetailPage';
+import CharacterCreatePage from './app/characters/CharacterCreatePage';
+import CharacterEditPage from './app/characters/CharacterEditPage';
 import EventsPage from './app/events/EventsPage';
 import LocationsPage from './app/locations/LocationsPage';
 import FactionsPage from './app/factions/FactionsPage';
@@ -17,6 +20,9 @@ import NotFoundPage from './app/NotFoundPage';
  * Route Structure:
  * - /: HomePage (dashboard with feature overview)
  * - /characters: CharactersPage (Phase 4)
+ * - /characters/create: CharacterCreatePage (Phase 4)
+ * - /characters/:id: CharacterDetailPage (Phase 4)
+ * - /characters/:id/edit: CharacterEditPage (Phase 4)
  * - /events: EventsPage (Phase 5)
  * - /locations: LocationsPage (Phase 6)
  * - /factions: FactionsPage (Phase 7)
@@ -40,6 +46,9 @@ function App() {
 
           {/* Entity Management Pages */}
           <Route path="characters" element={<CharactersPage />} />
+          <Route path="characters/create" element={<CharacterCreatePage />} />
+          <Route path="characters/:id" element={<CharacterDetailPage />} />
+          <Route path="characters/:id/edit" element={<CharacterEditPage />} />
           <Route path="events" element={<EventsPage />} />
           <Route path="locations" element={<LocationsPage />} />
           <Route path="factions" element={<FactionsPage />} />

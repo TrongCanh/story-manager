@@ -271,6 +271,27 @@ Display Updated UI / Hiển thị UI đã Cập nhật
 
 ---
 
+### Phase 2.1: I18n Type-Safe Implementation / Giai đoạn 2.1: Triển khai Type-Safe cho I18n
+
+**Goal / Mục tiêu:** Implement type-safe translation keys to ensure only valid keys are used / Triển khai các key dịch type-safe để đảm bảo chỉ sử dụng các key hợp lệ
+
+**Scope / Phạm vi:**
+
+- Add missing translation keys / Thêm các key dịch bị thiếu
+- Create type-safe TranslationKey type / Tạo kiểu TranslationKey type-safe
+- Update i18n system to use JSON imports / Cập nhật hệ thống i18n để sử dụng import JSON
+- Create helper utilities for translation key management / Tạo tiện ích trợ giúp cho quản lý translation keys
+
+**Deliverables / Sản phẩm:**
+
+- Complete translation keys in en.json and vi.json / Các key dịch đầy đủ trong en.json và vi.json
+- Type-safe TranslationKey type in src/types/i18n.ts / Kiểu TranslationKey type-safe trong src/types/i18n.ts
+- Updated lib/i18n.ts to import from JSON files / lib/i18n.ts đã cập nhật để import từ file JSON
+- Helper utilities in src/lib/i18nHelper.ts / Các tiện ích trợ giúp trong src/lib/i18nHelper.ts
+- Updated I18N_RULES.md with type-safe guidelines / I18N_RULES.md đã cập nhật với các hướng dẫn type-safe
+
+---
+
 ### Phase 3: Domain Data Structure / Giai đoạn 3: Cấu trúc Dữ liệu Domain
 
 **Goal / Mục tiêu:** Define and implement mock data structure for all entities / Định nghĩa và triển khai cấu trúc dữ liệu mock cho tất cả thực thể
@@ -506,21 +527,22 @@ Display Updated UI / Hiển thị UI đã Cập nhật
 
 ### Phase 4: Character Module / Giai đoạn 4: Module Nhân vật
 
-- [ ] Create CharacterListPage component / Tạo thành phần CharacterListPage
-- [ ] Create CharacterTable component / Tạo thành phần CharacterTable
-- [ ] Create CharacterDetailPage component / Tạo thành phần CharacterDetailPage
-- [ ] Create CharacterForm component / Tạo thành phần CharacterForm
-- [ ] Create CharacterCard component / Tạo thành phần CharacterCard
-- [ ] Create CharacterRelationships component / Tạo thành phần CharacterRelationships
-- [ ] Add routing for character pages / Thêm routing cho các trang nhân vật
-- [ ] Implement character list view / Triển khai xem danh sách nhân vật
-- [ ] Implement character detail view / Triển khai xem chi tiết nhân vật
-- [ ] Implement character creation form / Triển khai biểu mẫu tạo nhân vật
-- [ ] Implement character editing form / Triển khai biểu mẫu sửa nhân vật
-- [ ] Test character module / Kiểm tra module nhân vật
+- [x] Create CharacterListPage component / Tạo thành phần CharacterListPage
+- [x] Create CharacterTable component / Tạo thành phần CharacterTable
+- [x] Create CharacterDetailPage component / Tạo thành phần CharacterDetailPage
+- [x] Create CharacterForm component / Tạo thành phần CharacterForm
+- [x] Create CharacterCard component / Tạo thành phần CharacterCard
+- [x] Create CharacterRelationships component / Tạo thành phần CharacterRelationships
+- [x] Add routing for character pages / Thêm routing cho các trang nhân vật
+- [x] Implement character list view / Triển khai xem danh sách nhân vật
+- [x] Implement character detail view / Triển khai xem chi tiết nhân vật
+- [x] Implement character creation form / Triển khai biểu mẫu tạo nhân vật
+- [x] Implement character editing form / Triển khai biểu mẫu sửa nhân vật
+- [x] Test character module / Kiểm tra module nhân vật
 
 **Dependencies / Phụ thuộc:** Phase 3 / Giai đoạn 3
 **AI-Safe / An toàn cho AI:** All tasks are safe for AI automation / Tất cả công việc đều an toàn để AI tự động hóa
+**Status / Trạng thái:** ✅ COMPLETED / ĐÃ HOÀN THÀNH (2026-01-17)
 
 ---
 
@@ -716,7 +738,7 @@ Display Updated UI / Hiển thị UI đã Cập nhật
 
 ## Current Phase / Giai đoạn Hiện tại
 
-Phase 1: App Shell & Layout - COMPLETED / Phase 2: Theme & i18n - Ready to start / Giai đoạn 1: Shell Ứng dụng & Bố cục - ĐÃ HOÀN THÀNH / Giai đoạn 2: Chủ đề & Quốc tế hóa - Sẵn sàng bắt đầu
+Phase 1: App Shell & Layout - COMPLETED / Phase 2: Theme & i18n - COMPLETED / Phase 3: Domain Data Structure - COMPLETED / Phase 4: Character Module - COMPLETED / Giai đoạn 5: Event Module - Ready to start / Giai đoạn 1: Shell Ứng dụng & Bố cục - ĐÃ HOÀN THÀNH / Giai đoạn 2: Chủ đề & Quốc tế hóa - ĐÃ HOÀN THÀNH / Giai đoạn 3: Cấu trúc Dữ liệu Domain - ĐÃ HOÀN THÀNH / Giai đoạn 4: Module Nhân vật - ĐÃ HOÀN THÀNH / Giai đoạn 5: Module Sự kiện - Sẵn sàng bắt đầu
 
 ---
 
