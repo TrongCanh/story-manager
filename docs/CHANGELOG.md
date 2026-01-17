@@ -591,4 +591,116 @@ Tài liệu này ghi lại tất cả các thay đổi được thực hiện tr
 
 ---
 
-_Last updated: 2026-01-16_
+## Phase 1.5: Icon Migration / Giai đoạn 1.5: Di chuyển Icon
+
+**Date / Ngày:** 2026-01-17
+
+### User Request / Yêu cầu người dùng
+
+- Thay thế tất cả icon SVG bằng icon Lucide trong toàn bộ dự án
+- Đảm bảo icon hiển thị đúng màu theo theme
+
+### What AI Did / Những gì AI đã làm
+
+#### 1. Icon Library Setup / Thiết lập thư viện Icon
+
+- ✅ Confirmed `lucide-react` v0.562.0 is installed in [`package.json`](../story-manager/package.json:14)
+- ✅ No additional installation needed
+
+#### 2. Component Icon Updates / Cập nhật Icon Components
+
+- ✅ Updated [`src/components/layout/Sidebar.tsx`](../story-manager/src/components/layout/Sidebar.tsx):
+  - Imported Lucide icons: `Users`, `Calendar`, `MapPin`, `Building2`, `Link2`, `Clock`
+  - Replaced 6 inline SVG icons with Lucide components
+  - Icons inherit color from parent via `currentColor`
+
+- ✅ Updated [`src/components/layout/Header.tsx`](../story-manager/src/components/layout/Header.tsx):
+  - Fixed Home icon background color issue
+  - Changed `bg-primary-600` → `bg-blue-600` (light mode)
+  - Changed `dark:bg-primary-500` → `dark:bg-blue-500` (dark mode)
+  - Note: `primary-*` classes were not defined in Tailwind config
+
+#### 3. Page Icon Updates / Cập nhật Icon Pages
+
+- ✅ Updated [`src/app/HomePage.tsx`](../story-manager/src/app/HomePage.tsx):
+  - Imported Lucide icons for all 6 feature cards
+  - Replaced inline SVG icons with Lucide components
+
+- ✅ Updated [`src/app/NotFoundPage.tsx`](../story-manager/src/app/NotFoundPage.tsx):
+  - Imported `AlertTriangle` and `ArrowLeft` from Lucide
+  - Replaced error and back button icons
+
+- ✅ Updated [`src/app/characters/CharactersPage.tsx`](../story-manager/src/app/characters/CharactersPage.tsx):
+  - Imported `Users` icon from Lucide
+  - Replaced placeholder SVG icon
+
+- ✅ Updated [`src/app/events/EventsPage.tsx`](../story-manager/src/app/events/EventsPage.tsx):
+  - Imported `Calendar` icon from Lucide
+  - Replaced placeholder SVG icon
+
+- ✅ Updated [`src/app/factions/FactionsPage.tsx`](../story-manager/src/app/factions/FactionsPage.tsx):
+  - Imported `Building2` icon from Lucide
+  - Replaced placeholder SVG icon
+
+- ✅ Updated [`src/app/locations/LocationsPage.tsx`](../story-manager/src/app/locations/LocationsPage.tsx):
+  - Imported `MapPin` icon from Lucide
+  - Replaced placeholder SVG icon
+
+- ✅ Updated [`src/app/relationships/RelationshipsPage.tsx`](../story-manager/src/app/relationships/RelationshipsPage.tsx):
+  - Imported `Link2` icon from Lucide
+  - Replaced placeholder SVG icon
+
+- ✅ Updated [`src/app/timeline/TimelinePage.tsx`](../story-manager/src/app/timeline/TimelinePage.tsx):
+  - Imported `Clock` icon from Lucide
+  - Replaced placeholder SVG icon
+
+#### 4. Icon Color Theme Support / Hỗ trợ Màu Icon theo Theme
+
+- ✅ All Lucide icons use `currentColor` by default
+- ✅ Icons inherit color from parent element's `text-*` classes
+- ✅ Icons properly display in both light and dark themes
+
+### Files Modified / Các tệp đã sửa
+
+| File / Tệp                                                                                                    | Description / Mô tả                    |
+| ------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| [`src/components/layout/Sidebar.tsx`](../story-manager/src/components/layout/Sidebar.tsx)                     | Replaced 6 SVG icons with Lucide icons |
+| [`src/components/layout/Header.tsx`](../story-manager/src/components/layout/Header.tsx)                       | Fixed Home icon background color issue |
+| [`src/app/HomePage.tsx`](../story-manager/src/app/HomePage.tsx)                                               | Replaced 6 SVG icons with Lucide icons |
+| [`src/app/NotFoundPage.tsx`](../story-manager/src/app/NotFoundPage.tsx)                                       | Replaced 2 SVG icons with Lucide icons |
+| [`src/app/characters/CharactersPage.tsx`](../story-manager/src/app/characters/CharactersPage.tsx)             | Replaced SVG icon with Lucide icon     |
+| [`src/app/events/EventsPage.tsx`](../story-manager/src/app/events/EventsPage.tsx)                             | Replaced SVG icon with Lucide icon     |
+| [`src/app/factions/FactionsPage.tsx`](../story-manager/src/app/factions/FactionsPage.tsx)                     | Replaced SVG icon with Lucide icon     |
+| [`src/app/locations/LocationsPage.tsx`](../story-manager/src/app/locations/LocationsPage.tsx)                 | Replaced SVG icon with Lucide icon     |
+| [`src/app/relationships/RelationshipsPage.tsx`](../story-manager/src/app/relationships/RelationshipsPage.tsx) | Replaced SVG icon with Lucide icon     |
+| [`src/app/timeline/TimelinePage.tsx`](../story-manager/src/app/timeline/TimelinePage.tsx)                     | Replaced SVG icon with Lucide icon     |
+| [`docs/CHANGELOG.md`](../story-manager/docs/CHANGELOG.md)                                                     | Added Phase 1.5 changelog entry        |
+
+### Final Result / Kết quả cuối cùng
+
+**Phase 1.5: Icon Migration** đã hoàn thành thành công!
+
+✅ Tất cả icon SVG đã được thay thế bằng icon Lucide
+✅ Tổng cộng 20+ icon đã được cập nhật
+✅ Icon hiển thị đúng màu trong cả light và dark theme
+✅ Đã sửa lỗi màu nền icon Home ở light mode
+✅ Code gọn gàng và dễ bảo trì hơn
+
+**Các icon Lucide được sử dụng:**
+
+- `Users` - Characters
+- `Calendar` - Events
+- `MapPin` - Locations
+- `Building2` - Factions
+- `Link2` - Relationships
+- `Clock` - Timeline
+- `AlertTriangle` - 404 Error
+- `ArrowLeft` - Back button
+- `Menu`, `Home`, `X` - Header navigation
+- `Sun`, `Moon` - Theme switcher
+
+**Lưu ý / Note:** Lucide icons tự động kế thừa màu sắc từ theme thông qua `currentColor`, không cần cấu hình thêm.
+
+---
+
+_Last updated: 2026-01-17_
