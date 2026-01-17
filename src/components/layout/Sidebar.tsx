@@ -75,8 +75,8 @@ function Sidebar(): React.ReactElement {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
                   isActive
-                    ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400 font-medium'
-                    : 'text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800'
+                    ? 'bg-emerald-100 text-emerald-700 dark:bg-blue-900/20 dark:text-blue-400 font-medium'
+                    : 'text-gray-700 hover:bg-emerald-50 dark:text-gray-300 dark:hover:bg-gray-800'
                 }`
               }
             >

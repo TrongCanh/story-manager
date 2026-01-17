@@ -20,7 +20,7 @@ export default function ThemeSwitcher(): React.ReactElement {
     <button
       type="button"
       onClick={toggleTheme}
-      className="p-2 text-text-muted hover:text-text-primary dark:text-text-secondary dark:hover:text-text-primary rounded-lg hover:bg-surfaceMuted dark:hover:bg-dark-surfaceMuted transition-colors"
+      className="p-2 text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-blue-400 rounded-lg hover:bg-emerald-50 dark:hover:bg-gray-800 transition-colors"
       aria-label="Toggle theme"
       title={`Current theme: ${theme}`}
     >

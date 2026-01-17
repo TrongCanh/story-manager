@@ -8,14 +8,18 @@ Tài liệu này định nghĩa các chủ đề màu sắc cho ứng dụng. C�
 
 ## 1. Light Theme / Chủ đề Sáng
 
-- Background: white, gray-50
-  - Nền: white, gray-50
+- Background: white, emerald-50 (#ecfdf5)
+  - Nền: white, emerald-50 (#ecfdf5)
 - Text: gray-900, gray-700, gray-500
   - Văn bản: gray-900, gray-700, gray-500
-- Border: gray-200
-  - Viền: gray-200
-- Primary: blue-600
-  - Chính: blue-600
+- Border: emerald-100 (#d1fae5)
+  - Viền: emerald-100 (#d1fae5)
+- Primary: emerald-600 (#059669)
+  - Chính: emerald-600 (#059669)
+- Secondary: teal-500 (#14b8a6)
+  - Phụ: teal-500 (#14b8a6)
+- Accent: amber-500 (#f59e0b)
+  - Nhấn: amber-500 (#f59e0b)
 
 ---
 
@@ -27,8 +31,12 @@ Tài liệu này định nghĩa các chủ đề màu sắc cho ứng dụng. C�
   - Văn bản: gray-100, gray-300, gray-400
 - Border: gray-700
   - Viền: gray-700
-- Primary: blue-500
-  - Chính: blue-500
+- Primary: emerald-400 (#34d399)
+  - Chính: emerald-400 (#34d399)
+- Secondary: teal-400 (#2dd4bf)
+  - Phụ: teal-400 (#2dd4bf)
+- Accent: amber-400 (#fbbf24)
+  - Nhấn: amber-400 (#fbbf24)
 
 ---
 

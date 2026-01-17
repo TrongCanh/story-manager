@@ -26,7 +26,7 @@ function Header({ onMenuToggle, isMobileMenuOpen }: HeaderProps): React.ReactEle
   const { t } = useI18n();
 
   return (
-    <header className="border-b border bg-surface sticky top-0 z-50">
+    <header className="border-b border-emerald-100 bg-white dark:border-gray-700 dark:bg-gray-900 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* App Title / Logo */}
         <div className="flex items-center gap-4">
@@ -34,7 +34,7 @@ function Header({ onMenuToggle, isMobileMenuOpen }: HeaderProps): React.ReactEle
           <button
             type="button"
             onClick={onMenuToggle}
-            className="lg:hidden p-2 text-text-muted hover:text-text-primary dark:text-text-secondary dark:hover:text-text-primary rounded-lg hover:bg-surfaceMuted dark:hover:bg-dark-surfaceMuted transition-colors"
+            className="lg:hidden p-2 text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-blue-400 rounded-lg hover:bg-emerald-50 dark:hover:bg-gray-800 transition-colors"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
           >
@@ -42,11 +42,13 @@ function Header({ onMenuToggle, isMobileMenuOpen }: HeaderProps): React.ReactEle
           </button>
 
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center dark:bg-blue-500">
+            <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center dark:bg-blue-500">
               <Home className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-semibold text-text-primary">{t('app.title')}</h1>
+              <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                {t('app.title')}
+              </h1>
             </div>
           </Link>
         </div>

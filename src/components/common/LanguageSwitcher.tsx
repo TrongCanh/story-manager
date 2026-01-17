@@ -26,7 +26,7 @@ export default function LanguageSwitcher(): React.ReactElement {
     <button
       type="button"
       onClick={toggleLanguage}
-      className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+      className="p-2 text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-blue-400 rounded-lg hover:bg-emerald-50 dark:hover:bg-gray-800 transition-colors"
       aria-label="Switch language"
       title={`Current language: ${language === 'en' ? 'English' : 'Vietnamese'}`}
     >

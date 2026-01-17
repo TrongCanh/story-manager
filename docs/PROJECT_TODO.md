@@ -720,6 +720,25 @@ Phase 1: App Shell & Layout - COMPLETED / Phase 2: Theme & i18n - Ready to start
 
 ---
 
+### Phase 1.6: Color Theme Refactor & Component Extraction / Giai đoạn 1.6: Tái cấu hình Màu & Tách Component
+
+**Goal / Mục tiêu:** Apply fresh color palette and extract reusable components / Áp dụng bảng màu mới và tách các thành phần tái sử dụng
+
+**Scope / Phạm vi:**
+
+- New color palette implementation / Triển khai bảng màu mới
+- UI component creation / Tạo thành phần UI
+- Page component refactoring / Tái cấu hình các thành phần trang
+
+**Deliverables / Sản phẩm:**
+
+- New Emerald/Teal/Amber color palette for light mode / Bảng màu Emerald/Teal/Amber cho light mode
+- Dark mode unchanged (Blue-500) / Dark mode giữ nguyên (Blue-500)
+- Reusable UI components / Các thành phần UI tái sử dụng
+- Refactored pages using new components / Các trang đã tái cấu hình sử dụng component mới
+
+---
+
 ## Last Updated / Cập nhật lần cuối
 
-2026-01-16
+2026-01-17

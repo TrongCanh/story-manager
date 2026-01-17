@@ -38,7 +38,7 @@ function Layout(): React.ReactElement {
   };
 
   return (
-    <div className="h-screen w-screen bg-gray-50 dark:bg-gray-900 flex flex-col overflow-hidden">
+    <div className="h-screen w-screen bg-emerald-50 dark:bg-gray-900 flex flex-col overflow-hidden">
       {/* Header Component with mobile menu toggle */}
       <Header onMenuToggle={handleMenuToggle} isMobileMenuOpen={isMobileMenuOpen} />
 
@@ -57,7 +57,7 @@ function Layout(): React.ReactElement {
         <aside
           className={`
             fixed lg:static top-0 left-0 bottom-0 z-50
-            w-64 border-r border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900
+            w-64 border-r border-emerald-100 bg-white dark:border-gray-700 dark:bg-gray-900
             transform transition-transform duration-300 ease-in-out
             ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
             lg:translate-x-0
@@ -68,7 +68,7 @@ function Layout(): React.ReactElement {
         </aside>
 
         {/* Main Content Wrapper */}
-        <main className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-900">
+        <main className="flex-1 overflow-y-auto bg-emerald-50 dark:bg-gray-900">
           {/* Centered Layout Container */}
           <div className="max-w-6xl mx-auto px-6 py-8">
             {/* Page Content Outlet */}

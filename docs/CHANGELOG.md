@@ -703,4 +703,163 @@ Tài liệu này ghi lại tất cả các thay đổi được thực hiện tr
 
 ---
 
+## Phase 1.6: Color Theme Refactor & Component Extraction / Giai đoạn 1.6: Tái cấu hình Màu & Tách Component
+
+**Date / Ngày:** 2026-01-17
+
+### User Request / Yêu cầu người dùng
+
+- Thay đổi màu sắc cho light mode (màu hiện tại bị nhạt nhòa, thiếu điểm nhấn)
+- Tách page thành các component cho clean code
+- Cập nhật changelog và các file todo
+
+### What AI Did / Những gì AI đã làm
+
+#### 1. New Color Palette / Bộ màu mới
+
+- ✅ Updated [`tailwind.config.js`](../story-manager/tailwind.config.js) with fresh color palette:
+  - **Primary**: Emerald-600 (#059669) - màu xanh lá tươi sáng
+  - **Secondary**: Teal-500 (#14b8a6) - màu xanh ngọc
+  - **Accent**: Amber-500 (#f59e0b) - màu cam vàng nhấn
+  - Full color scale for emerald, teal, and amber (50-900)
+- ✅ Updated [`src/index.css`](../story-manager/src/index.css):
+  - Changed background color from `#f9fafb` to `#ecfdf5` (emerald-50)
+
+#### 2. Theme Rules Update / Cập nhật Quy tắc Chủ đề
+
+- ✅ Updated [`docs/THEME_RULES.md`](../story-manager/docs/THEME_RULES.md):
+  - Light theme: Emerald/Teal/Amber palette
+  - Dark theme: Kept original Blue-500 (unchanged)
+  - Added secondary and accent color definitions
+
+#### 3. Layout Components Color Update / Cập nhật Màu các thành phần Layout
+
+- ✅ Updated [`src/components/layout/Header.tsx`](../story-manager/src/components/layout/Header.tsx):
+  - Logo background: `bg-emerald-600` (light) / `dark:bg-blue-500` (dark)
+  - Border: `border-emerald-100` (light) / `dark:border-gray-700` (dark)
+  - Hover states: `hover:text-emerald-600` (light) / `dark:hover:text-blue-400` (dark)
+
+- ✅ Updated [`src/components/layout/Sidebar.tsx`](../story-manager/src/components/layout/Sidebar.tsx):
+  - Active state: `bg-emerald-100 text-emerald-700` (light) / `dark:bg-blue-900/20 dark:text-blue-400` (dark)
+  - Hover state: `hover:bg-emerald-50` (light) / `dark:hover:bg-gray-800` (dark)
+
+- ✅ Updated [`src/components/layout/Layout.tsx`](../story-manager/src/components/layout/Layout.tsx):
+  - Background: `bg-emerald-50` (light) / `dark:bg-gray-900` (dark)
+  - Border: `border-emerald-100` (light) / `dark:border-gray-700` (dark)
+
+#### 4. Common Components Color Update / Cập nhật Màu các thành phần Chung
+
+- ✅ Updated [`src/components/common/ThemeSwitcher.tsx`](../story-manager/src/components/common/ThemeSwitcher.tsx):
+  - Hover: `hover:text-emerald-600` (light) / `dark:hover:text-blue-400` (dark)
+  - Background: `hover:bg-emerald-50` (light) / `dark:hover:bg-gray-800` (dark)
+
+- ✅ Updated [`src/components/common/LanguageSwitcher.tsx`](../story-manager/src/components/common/LanguageSwitcher.tsx):
+  - Hover: `hover:text-emerald-600` (light) / `dark:hover:text-blue-400` (dark)
+  - Background: `hover:bg-emerald-50` (light) / `dark:hover:bg-gray-800` (dark)
+
+#### 5. UI Components Creation / Tạo thành phần UI
+
+- ✅ Created [`src/components/ui/FeatureCard.tsx`](../story-manager/src/components/ui/FeatureCard.tsx):
+  - Reusable feature card component
+  - Gradient icon background: `from-emerald-500 to-teal-500` (light) / `from-blue-600 to-indigo-600` (dark)
+  - Hover effects with shadow
+  - Border: `border-emerald-200` (light) / `dark:border-gray-700` (dark)
+
+- ✅ Created [`src/components/ui/StatusSection.tsx`](../story-manager/src/components/ui/StatusSection.tsx):
+  - Reusable status section component
+  - StatusItem with colored dot: `bg-emerald-500` (light) / `dark:bg-blue-500` (dark)
+
+- ✅ Created [`src/components/ui/PlaceholderPage.tsx`](../story-manager/src/components/ui/PlaceholderPage.tsx):
+  - Reusable placeholder page component
+  - Theme-aware icon colors via props
+  - Background: `border-emerald-100` (light) / `dark:border-gray-700` (dark)
+
+#### 6. Page Components Refactor / Tái cấu hình các thành phần Trang
+
+- ✅ Updated [`src/app/HomePage.tsx`](../story-manager/src/app/HomePage.tsx):
+  - Refactored to use FeatureCard and StatusSection components
+  - Added dark mode text colors: `dark:text-white`, `dark:text-gray-300`
+  - Improved feature cards with gradient icons
+  - Enhanced hover effects with shadow
+
+- ✅ Updated [`src/app/characters/CharactersPage.tsx`](../story-manager/src/app/characters/CharactersPage.tsx):
+  - Refactored to use PlaceholderPage component
+  - Icon color: `text-emerald-400` (light) / `dark:text-gray-400` (dark)
+
+- ✅ Updated [`src/app/events/EventsPage.tsx`](../story-manager/src/app/events/EventsPage.tsx):
+  - Refactored to use PlaceholderPage component
+  - Icon color: `text-teal-500` (light) / `dark:text-gray-400` (dark)
+
+- ✅ Updated [`src/app/locations/LocationsPage.tsx`](../story-manager/src/app/locations/LocationsPage.tsx):
+  - Refactored to use PlaceholderPage component
+  - Icon color: `text-amber-500` (light) / `dark:text-gray-400` (dark)
+
+- ✅ Updated [`src/app/factions/FactionsPage.tsx`](../story-manager/src/app/factions/FactionsPage.tsx):
+  - Refactored to use PlaceholderPage component
+  - Icon color: `text-emerald-600` (light) / `dark:text-gray-400` (dark)
+
+- ✅ Updated [`src/app/relationships/RelationshipsPage.tsx`](../story-manager/src/app/relationships/RelationshipsPage.tsx):
+  - Refactored to use PlaceholderPage component
+  - Icon color: `text-teal-600` (light) / `dark:text-gray-400` (dark)
+
+- ✅ Updated [`src/app/timeline/TimelinePage.tsx`](../story-manager/src/app/timeline/TimelinePage.tsx):
+  - Refactored to use PlaceholderPage component
+  - Icon color: `text-amber-600` (light) / `dark:text-gray-400` (dark)
+
+- ✅ Updated [`src/app/NotFoundPage.tsx`](../story-manager/src/app/NotFoundPage.tsx):
+  - Updated with new color scheme
+  - Icon: `text-amber-500` (light) / `dark:text-gray-400` (dark)
+  - Button: `bg-emerald-600` (light) / `dark:bg-blue-600` (dark)
+
+### Files Created / Các tệp đã tạo
+
+| File / Tệp                                                                                        | Description / Mô tả                 |
+| ------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| [`src/components/ui/FeatureCard.tsx`](../story-manager/src/components/ui/FeatureCard.tsx)         | Reusable feature card component     |
+| [`src/components/ui/StatusSection.tsx`](../story-manager/src/components/ui/StatusSection.tsx)     | Reusable status section component   |
+| [`src/components/ui/PlaceholderPage.tsx`](../story-manager/src/components/ui/PlaceholderPage.tsx) | Reusable placeholder page component |
+
+### Files Modified / Các tệp đã sửa
+
+| File / Tệp                                                                                                    | Description / Mô tả                    |
+| ------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| [`tailwind.config.js`](../story-manager/tailwind.config.js)                                                   | Added Emerald/Teal/Amber color palette |
+| [`src/index.css`](../story-manager/src/index.css)                                                             | Updated background color to emerald-50 |
+| [`docs/THEME_RULES.md`](../story-manager/docs/THEME_RULES.md)                                                 | Updated with new color palette         |
+| [`src/components/layout/Header.tsx`](../story-manager/src/components/layout/Header.tsx)                       | Updated colors for light mode          |
+| [`src/components/layout/Sidebar.tsx`](../story-manager/src/components/layout/Sidebar.tsx)                     | Updated colors for light mode          |
+| [`src/components/layout/Layout.tsx`](../story-manager/src/components/layout/Layout.tsx)                       | Updated colors for light mode          |
+| [`src/components/common/ThemeSwitcher.tsx`](../story-manager/src/components/common/ThemeSwitcher.tsx)         | Updated hover colors                   |
+| [`src/components/common/LanguageSwitcher.tsx`](../story-manager/src/components/common/LanguageSwitcher.tsx)   | Updated hover colors                   |
+| [`src/app/HomePage.tsx`](../story-manager/src/app/HomePage.tsx)                                               | Refactored to use new components       |
+| [`src/app/characters/CharactersPage.tsx`](../story-manager/src/app/characters/CharactersPage.tsx)             | Refactored to use PlaceholderPage      |
+| [`src/app/events/EventsPage.tsx`](../story-manager/src/app/events/EventsPage.tsx)                             | Refactored to use PlaceholderPage      |
+| [`src/app/locations/LocationsPage.tsx`](../story-manager/src/app/locations/LocationsPage.tsx)                 | Refactored to use PlaceholderPage      |
+| [`src/app/factions/FactionsPage.tsx`](../story-manager/src/app/factions/FactionsPage.tsx)                     | Refactored to use PlaceholderPage      |
+| [`src/app/relationships/RelationshipsPage.tsx`](../story-manager/src/app/relationships/RelationshipsPage.tsx) | Refactored to use PlaceholderPage      |
+| [`src/app/timeline/TimelinePage.tsx`](../story-manager/src/app/timeline/TimelinePage.tsx)                     | Refactored to use PlaceholderPage      |
+| [`src/app/NotFoundPage.tsx`](../story-manager/src/app/NotFoundPage.tsx)                                       | Updated with new color scheme          |
+| [`docs/CHANGELOG.md`](../story-manager/docs/CHANGELOG.md)                                                     | Added Phase 1.6 changelog entry        |
+
+### Final Result / Kết quả cuối cùng
+
+**Phase 1.6: Color Theme Refactor & Component Extraction** đã hoàn thành thành công!
+
+✅ Bộ màu mới Emerald/Teal/Amber đã được áp dụng cho light mode
+✅ Dark mode giữ nguyên màu Blue-500 như cũ
+✅ 3 component UI tái sử dụng đã được tạo (FeatureCard, StatusSection, PlaceholderPage)
+✅ Tất cả page đã được refactor để sử dụng component mới
+✅ Code gọn gàng, dễ bảo trì và mở rộng hơn
+✅ Changelog đã được cập nhật
+
+**Lưu ý / Note:**
+
+- Light mode sử dụng tông màu Emerald/Teal/Amber tươi sáng, hiện đại
+- Dark mode giữ nguyên màu Blue-500 như yêu cầu
+- Các component UI tái sử dụng giúp giảm code trùng lặp
+
+**Tiếp theo / Next Steps:** Phase 4: Character Module
+
+---
+
 _Last updated: 2026-01-17_

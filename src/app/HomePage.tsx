@@ -1,4 +1,6 @@
 import { Users, Calendar, MapPin, Building2, Link2, Clock } from 'lucide-react';
+import FeatureCard from '../components/ui/FeatureCard';
+import StatusSection from '../components/ui/StatusSection';
 
 /**
  * HomePage Component
@@ -55,60 +57,39 @@ function HomePage() {
     },
   ];
 
+  /**
+   * Status items for Phase 1
+   */
+  const statusItems = [
+    'React Router configured',
+    'Header and Sidebar navigation',
+    'Centered layout (max-w-6xl)',
+    'Responsive design foundation',
+  ];
+
   return (
     <div>
       {/* Page Title */}
-      <h1 className="text-2xl font-semibold text-gray-900 mb-2">Story Manager</h1>
-      <p className="text-sm text-gray-700 mb-8">
+      <h1 className="text-2xl font-semibold text-gray-900 mb-2 dark:text-white">Story Manager</h1>
+      <p className="text-sm text-gray-700 mb-8 dark:text-gray-300">
         Professional story-management web application for novelists
       </p>
 
       {/* Feature Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {features.map((feature) => (
-          <a
+          <FeatureCard
             key={feature.path}
-            href={feature.path}
-            className="group bg-white border border-gray-200 rounded-xl p-6 hover:border-blue-200 transition-colors"
-          >
-            <div className="flex items-start gap-4">
-              {/* Feature Icon */}
-              <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center text-gray-600 group-hover:text-blue-600 group-hover:bg-blue-50 transition-colors">
-                {feature.icon}
-              </div>
-
-              {/* Feature Content */}
-              <div className="flex-1">
-                <h2 className="text-lg font-medium text-gray-900 mb-2">{feature.title}</h2>
-                <p className="text-sm text-gray-700">{feature.description}</p>
-              </div>
-            </div>
-          </a>
+            title={feature.title}
+            description={feature.description}
+            path={feature.path}
+            icon={feature.icon}
+          />
         ))}
       </div>
 
       {/* Status Section */}
-      <div className="mt-8 bg-white border border-gray-200 rounded-xl p-6">
-        <h2 className="text-lg font-medium text-gray-900 mb-4">Phase 1: App Shell & Layout</h2>
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-            <span className="text-sm text-gray-700">React Router configured</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-            <span className="text-sm text-gray-700">Header and Sidebar navigation</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-            <span className="text-sm text-gray-700">Centered layout (max-w-6xl)</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-            <span className="text-sm text-gray-700">Responsive design foundation</span>
-          </div>
-        </div>
-      </div>
+      <StatusSection title="Phase 1: App Shell & Layout" items={statusItems} />
     </div>
   );
 }
