@@ -84,6 +84,32 @@
     "cancel": "Hủy",
     "confirm": "Xác nhận"
   },
+  "events": {
+    "title": "Sự kiện",
+    "subtitle": "Quản lý Sự kiện",
+    "description": "Quản lý sự kiện câu chuyện với theo dõi dựa trên thời gian. Theo dõi các điểm cốt truyện, cuộc gặp gỡ, hành động và cú sốp trên dòng thời gian kể chuyện.",
+    "list": "Danh sách Sự kiện",
+    "details": "Chi tiết Sự kiện",
+    "create": "Tạo Sự kiện",
+    "edit": "Sửa Sự kiện",
+    "delete": "Xóa Sự kiện",
+    "search": "Tìm kiếm sự kiện...",
+    "noEvents": "Không tìm thấy sự kiện",
+    "timestamp": "Thời gian",
+    "eventType": "Loại sự kiện",
+    "importance": "Mức độ quan trọng",
+    "location": "Địa điểm",
+    "participants": "Người tham gia",
+    "outcome": "Kết quả",
+    "impact": "Tác động",
+    "confirmDelete": "Bạn có chắc chắn muốn xóa sự kiện này không?",
+    "importanceLevels": {
+      "low": "Thấp",
+      "medium": "Trung bình",
+      "high": "Cao",
+      "critical": "Quan trọng"
+    }
+  },
   "notFound": {
     "title": "404 - Không tìm thấy trang",
     "message": "Trang bạn đang tìm kiếm không tồn tại.",

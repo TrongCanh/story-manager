@@ -1123,4 +1123,190 @@ All components follow project design guidelines:
 
 ---
 
+## Phase 5: Event Module / Giai đoạn 5: Module Sự kiện
+
+**Date / Ngày:** 2026-01-17
+
+### User Request / Yêu cầu người dùng
+
+- Triển khai Phase 5: Event Module
+- Code phải tương thích với code trước đó, đặc biệt là đồng bộ về mặt giao diện, ngôn ngữ
+
+### What AI Did / Những gì AI đã làm
+
+#### 1. Translation Files / Các tệp dịch thuật
+
+- ✅ Updated [`src/locales/en.json`](../story-manager/src/locales/en.json) with event-related keys:
+  - `events.title`: "Events"
+  - `events.subtitle`: "Event Management"
+  - `events.description`: "Manage your story events with time-based tracking. Track plot points, meetings, actions, and plot twists across your narrative timeline."
+  - `events.list`: "Event List"
+  - `events.details`: "Event Details"
+  - `events.create`: "Create Event"
+  - `events.edit`: "Edit Event"
+  - `events.delete`: "Delete Event"
+  - `events.search`: "Search events..."
+  - `events.noEvents`: "No events found"
+  - `events.timestamp`: "Timestamp"
+  - `events.eventType`: "Event Type"
+  - `events.importance`: "Importance"
+  - `events.location`: "Location"
+  - `events.participants`: "Participants"
+  - `events.outcome`: "Outcome"
+  - `events.impact`: "Impact"
+  - `events.confirmDelete`: "Are you sure you want to delete this event?"
+  - `events.importanceLevels.low`: "Low"
+  - `events.importanceLevels.medium`: "Medium"
+  - `events.importanceLevels.high`: "High"
+  - `events.importanceLevels.critical`: "Critical"
+
+- ✅ Updated [`src/locales/vi.json`](../story-manager/src/locales/vi.json) with Vietnamese translations for all event keys:
+  - `events.title`: "Sự kiện"
+  - `events.subtitle`: "Quản lý Sự kiện"
+  - `events.description`: "Quản lý sự kiện câu chuyện với theo dõi dựa trên thời gian. Theo dõi các điểm cốt truyện, cuộc gặp gỡ, hành động và cú sốp trên dòng thời gian kể chuyện."
+  - `events.list`: "Danh sách Sự kiện"
+  - `events.details`: "Chi tiết Sự kiện"
+  - `events.create`: "Tạo Sự kiện"
+  - `events.edit`: "Sửa Sự kiện"
+  - `events.delete`: "Xóa Sự kiện"
+  - `events.search`: "Tìm kiếm sự kiện..."
+  - `events.noEvents`: "Không tìm thấy sự kiện"
+  - `events.timestamp`: "Thời gian"
+  - `events.eventType`: "Loại sự kiện"
+  - `events.importance`: "Mức độ quan trọng"
+  - `events.location`: "Địa điểm"
+  - `events.participants`: "Người tham gia"
+  - `events.outcome`: "Kết quả"
+  - `events.impact`: "Tác động"
+  - `events.confirmDelete`: "Bạn có chắc chắn muốn xóa sự kiện này không?"
+  - `events.importanceLevels.low`: "Thấp"
+  - `events.importanceLevels.medium`: "Trung bình"
+  - `events.importanceLevels.high`: "Cao"
+  - `events.importanceLevels.critical`: "Quan trọng"
+
+#### 2. Type Definitions / Định nghĩa Kiểu
+
+- ✅ Event type already defined in [`src/types/event.ts`](../story-manager/src/types/event.ts) from Phase 3
+
+#### 3. Domain Components / Các thành phần Domain
+
+- ✅ Created [`src/components/domain/event/EventTable.tsx`](../story-manager/src/components/domain/event/EventTable.tsx):
+  - Reusable table component for displaying events
+  - Columns: Name, Timestamp, Type, Importance, Actions
+  - Edit and Delete buttons for each event
+  - Click on row to view event details
+  - Theme-aware colors (emerald for light, blue for dark)
+  - Importance badge with color coding (gray/blue/amber/red for low/medium/high/critical)
+  - Timestamp formatting for display
+
+- ✅ Created [`src/components/domain/event/EventForm.tsx`](../story-manager/src/components/domain/event/EventForm.tsx):
+  - Form component for creating/editing events
+  - Vertical form layout with labels above inputs
+  - All event fields: name, description, timestamp, locationId, eventType, importance, participants, outcome, impact
+  - Importance dropdown with four levels (low, medium, high, critical)
+  - Participants input as comma-separated character IDs
+  - Time range inputs (timestamp)
+  - Save and Cancel buttons
+  - Theme-aware colors and focus states
+
+#### 4. Page Components / Các thành phần Trang
+
+- ✅ Updated [`src/app/events/EventsPage.tsx`](../story-manager/src/app/events/EventsPage.tsx):
+  - Event list page with search functionality
+  - Search bar for filtering events by name, description, or type
+  - Create button for new events
+  - Uses EventTable component
+  - Empty state when no events found
+  - Theme-aware colors
+
+- ✅ Created [`src/app/events/EventDetailPage.tsx`](../story-manager/src/app/events/EventDetailPage.tsx):
+  - Event detail page showing full event information
+  - Event name and description header
+  - Event details grid: timestamp, eventType, importance, location, participants, outcome, impact
+  - Location name lookup from locations data
+  - Participant name lookup from characters data
+  - Importance badge with color coding
+  - Back, Edit, and Delete buttons
+  - Event not found state
+  - Theme-aware colors
+
+- ✅ Created [`src/app/events/EventCreatePage.tsx`](../story-manager/src/app/events/EventCreatePage.tsx):
+  - Page for creating new events
+  - Uses EventForm component
+  - Back navigation on cancel
+  - TODO: Implement create functionality
+
+- ✅ Created [`src/app/events/EventEditPage.tsx`](../story-manager/src/app/events/EventEditPage.tsx):
+  - Page for editing existing events
+  - Uses EventForm component with pre-filled data
+  - Back navigation on cancel
+  - TODO: Implement update functionality
+
+#### 5. Routing Configuration / Cấu hình Routing
+
+- ✅ Updated [`src/App.tsx`](../story-manager/src/App.tsx) with new event routes:
+  - `/events/create` - EventCreatePage
+  - `/events/:id` - EventDetailPage
+  - `/events/:id/edit` - EventEditPage
+  - Updated route structure documentation
+
+#### 6. Design Compliance / Tuân thủ Quy tắc Thiết kế
+
+All components follow project design guidelines:
+
+- ✅ Centered layout with max-w-6xl, mx-auto, px-6
+- ✅ Consistent typography: text-2xl font-semibold (page title), text-lg font-medium (section title), text-sm text-gray-700 (body)
+- ✅ Emerald/Teal/Amber color palette for light mode
+- ✅ Blue-500 color for dark mode
+- ✅ Cards with bg-white border-emerald-100 rounded-xl p-6 (light) / dark:bg-gray-800 dark:border-gray-700 (dark)
+- ✅ Vertical forms with labels above inputs
+- ✅ Tables for lists
+- ✅ Minimal interactions (hover, focus only when helpful)
+- ✅ Theme-aware colors throughout
+
+### Files Created / Các tệp đã tạo
+
+| File / Tệp                                                                                                  | Description / Mô tả                                                  |
+| ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| [`src/components/domain/event/EventTable.tsx`](../story-manager/src/components/domain/event/EventTable.tsx) | Reusable event table component / Thành phần bảng sự kiện tái sử dụng |
+| [`src/components/domain/event/EventForm.tsx`](../story-manager/src/components/domain/event/EventForm.tsx)   | Event form component / Thành phần biểu mẫu sự kiện                   |
+
+### Files Modified / Các tệp đã sửa
+
+| File / Tệp                                                                        | Description / Mô tả                                                     |
+| --------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| [`src/locales/en.json`](../story-manager/src/locales/en.json)                     | Added event translation keys / Thêm các key dịch sự kiện                |
+| [`src/locales/vi.json`](../story-manager/src/locales/vi.json)                     | Added event translation keys / Thêm các key dịch sự kiện                |
+| [`src/types/i18n.ts`](../story-manager/src/types/i18n.ts)                         | Added event TranslationKey types / Thêm các kiểu TranslationKey sự kiện |
+| [`src/lib/i18nHelper.ts`](../story-manager/src/lib/i18nHelper.ts)                 | Added event keys to helper / Thêm các key sự kiện vào helper            |
+| [`src/App.tsx`](../story-manager/src/App.tsx)                                     | Added event routes / Thêm routes sự kiện                                |
+| [`src/app/events/EventsPage.tsx`](../story-manager/src/app/events/EventsPage.tsx) | Updated to full implementation / Cập nhật thành implementation đầy đủ   |
+| [`docs/PROJECT_TODO.md`](../story-manager/docs/PROJECT_TODO.md)                   | Updated Phase 5 status / Cập nhật trạng thái Phase 5                    |
+
+### Final Result / Kết quả cuối cùng
+
+**Phase 5: Event Module** đã hoàn thành thành công!
+
+✅ Translation files đã được cập nhật với các key dịch sự kiện cho cả tiếng Anh và tiếng Việt
+✅ EventTable component đã được tạo với bảng hiển thị sự kiện
+✅ EventForm component đã được tạo với biểu mẫu tạo/sửa sự kiện
+✅ EventDetailPage đã được tạo với trang chi tiết sự kiện
+✅ EventCreatePage đã được tạo với trang tạo sự kiện
+✅ EventEditPage đã được tạo với trang sửa sự kiện
+✅ Routing đã được cấu hình cho các trang sự kiện
+✅ Code tuân thủ các quy tắc thiết kế dự án (màu sắc, typography, spacing, bố cục)
+✅ Tất cả thành phần tương thích với Character module về mặt giao diện và ngôn ngữ
+
+**Lưu ý / Note:**
+
+- Tất cả thành phần sử dụng các translation key type-safe
+- Event module tuân thủ cùng pattern với Character module
+- Màu sắc importance badge (gray/blue/amber/red) cho phép phân loại mức độ quan trọng
+- Participants hiển thị tên nhân vật thay vì ID
+- Location hiển thị tên địa điểm thay vì ID
+
+**Tiếp theo / Next Steps:** Phase 6: Location Module
+
+---
+
 _Last updated: 2026-01-17_

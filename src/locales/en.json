@@ -84,6 +84,32 @@
     "cancel": "Cancel",
     "confirm": "Confirm"
   },
+  "events": {
+    "title": "Events",
+    "subtitle": "Event Management",
+    "description": "Manage your story events with time-based tracking. Track plot points, meetings, actions, and plot twists across your narrative timeline.",
+    "list": "Event List",
+    "details": "Event Details",
+    "create": "Create Event",
+    "edit": "Edit Event",
+    "delete": "Delete Event",
+    "search": "Search events...",
+    "noEvents": "No events found",
+    "timestamp": "Timestamp",
+    "eventType": "Event Type",
+    "importance": "Importance",
+    "location": "Location",
+    "participants": "Participants",
+    "outcome": "Outcome",
+    "impact": "Impact",
+    "confirmDelete": "Are you sure you want to delete this event?",
+    "importanceLevels": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    }
+  },
   "notFound": {
     "title": "404 - Page Not Found",
     "message": "The page you're looking for doesn't exist.",

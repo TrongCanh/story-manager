@@ -91,6 +91,30 @@ export type TranslationKey =
   | 'characters.cancel'
   | 'characters.confirm'
 
+  // Events keys / Các key Sự kiện
+  | 'events.title'
+  | 'events.subtitle'
+  | 'events.description'
+  | 'events.list'
+  | 'events.details'
+  | 'events.create'
+  | 'events.edit'
+  | 'events.delete'
+  | 'events.search'
+  | 'events.noEvents'
+  | 'events.timestamp'
+  | 'events.eventType'
+  | 'events.importance'
+  | 'events.location'
+  | 'events.participants'
+  | 'events.outcome'
+  | 'events.impact'
+  | 'events.confirmDelete'
+  | 'events.importanceLevels.low'
+  | 'events.importanceLevels.medium'
+  | 'events.importanceLevels.high'
+  | 'events.importanceLevels.critical'
+
   // Not Found keys / Các key Không tìm thấy
   | 'notFound.title'
   | 'notFound.message'
@@ -175,6 +199,28 @@ export function isValidTranslationKey(key: string): key is TranslationKey {
     'characters.confirmDelete',
     'characters.cancel',
     'characters.confirm',
+    'events.title',
+    'events.subtitle',
+    'events.description',
+    'events.list',
+    'events.details',
+    'events.create',
+    'events.edit',
+    'events.delete',
+    'events.search',
+    'events.noEvents',
+    'events.timestamp',
+    'events.eventType',
+    'events.importance',
+    'events.location',
+    'events.participants',
+    'events.outcome',
+    'events.impact',
+    'events.confirmDelete',
+    'events.importanceLevels.low',
+    'events.importanceLevels.medium',
+    'events.importanceLevels.high',
+    'events.importanceLevels.critical',
     'notFound.title',
     'notFound.message',
     'notFound.goHome',
