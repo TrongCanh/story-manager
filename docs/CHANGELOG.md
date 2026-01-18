@@ -5,6 +5,200 @@ Tài liệu này ghi lại tất cả các thay đổi được thực hiện tr
 
 ---
 
+## Phase 1: New Data Structure / Giai đoạn 1: Cấu Trúc Dữ Liệu Mới
+
+**Date / Ngày:** 2026-01-18
+
+### User Request / Yêu cầu người dùng
+
+- Đọc file kế hoạch business-redesign-plan.md để triển khai Phase 1: New Data Structure
+- Cập nhật các types theo SRS.md trong khi giữ nguyên giao diện UI hiện có
+
+### What AI Did / Những gì AI đã làm
+
+#### 1. Novel Types / Các kiểu Tiểu thuyết
+
+- ✅ Created [`src/types/novel.ts`](../story-manager/src/types/novel.ts):
+  - `Novel` interface with ownership and sharing capabilities
+  - `NovelStatus` type: 'public' | 'private'
+  - `NovelSharingRole` type: 'owner' | 'viewer'
+  - `NovelSharing` interface for sharing relationships
+  - `NovelStatus` constants: PUBLIC, PRIVATE
+  - `NovelSharingRole` constants: OWNER, VIEWER
+
+#### 2. Character Types / Các kiểu Nhân vật
+
+- ✅ Updated [`src/types/character.ts`](../story-manager/src/types/character.ts):
+  - Added `novelId: string` - Novel ID this character belongs to
+  - Added `avatar: string | null` - Avatar image URL
+  - Added `tags: string[]` - Array of tag IDs assigned to this character
+  - Changed `CharacterAttribute` to `CharacterVersion`:
+    - Added `id: string` - Unique identifier for this version
+    - Changed `timeRange` to `validFrom: string | null` and `validTo: string | null`
+    - Kept `appearance: string` - Character's appearance description
+    - Kept `personality: string` - Character's personality description
+    - Added `status: string` - Character's status (e.g., "Alive", "Dead", "Missing")
+    - Kept `notes: string` - Additional notes about this version
+    - Removed fields: `role`, `age`, `gender`, `background`, `goals`, `flaws`, `skills`
+
+#### 3. Relationship Types / Các kiểu Mối quan hệ
+
+- ✅ Updated [`src/types/relationship.ts`](../story-manager/src/types/relationship.ts):
+  - Changed `entity1Id` to `characterAId: string` - First character ID (Character A)
+  - Changed `entity2Id` to `characterBId: string` - Second character ID (Character B)
+  - Changed `details` to `periods: RelationshipPeriod[]` - Time-based relationship periods
+  - Changed `RelationshipDetail` to `RelationshipPeriod`:
+    - Added `id: string` - Unique identifier for this period
+    - Kept `relationshipType: string` - Relationship type (free text, e.g., "Friend", "Enemy", "Spouse", "Mentor")
+    - Changed `timeRange` to `validFrom: string | null` and `validTo: string | null`
+    - Kept `description: string` - Description/notes about this relationship period
+    - Removed fields: `status` (active/inactive/complicated/hostile/allied), `strength` (number)
+
+#### 4. Event Types / Các kiểu Sự kiện
+
+- ✅ Updated [`src/types/event.ts`](../story-manager/src/types/event.ts):
+  - Added `novelId: string` - Novel ID this event belongs to
+  - Changed `name` to `title: string` - Event title
+  - Changed `timestamp` to `startDate: string | null` and `endDate: string | null`
+  - Changed `locationId: string | null` to `locations: string[]` - Multiple locations (many-to-many)
+  - Changed `participants: string[]` to `characters: EventCharacter[]` - Multiple characters with role and notes:
+    - `EventCharacter` interface with `characterId`, `role`, `notes`
+  - Added `factions: EventFaction[]` - Multiple factions with role and notes:
+    - `EventFaction` interface with `factionId`, `role`, `notes`
+  - Added `tags: string[]` - Array of tag IDs assigned to this event
+  - Removed fields: `eventType`, `importance`, `outcome`, `impact`
+
+#### 5. Location Types / Các kiểu Địa điểm
+
+- ✅ Updated [`src/types/location.ts`](../story-manager/src/types/location.ts):
+  - Added `novelId: string` - Novel ID this location belongs to
+  - Added `tags: string[]` - Array of tag IDs assigned to this location
+  - Changed `LocationAttribute` to `LocationVersion`:
+    - Added `id: string` - Unique identifier for this version
+    - Changed `timeRange` to `validFrom: string | null` and `validTo: string | null`
+    - Changed `description` to `description: string` - Location description
+    - Changed `notes` to `features: string` - Location features/characteristics
+    - Removed fields: `locationType`, `climate`, `geography`, `population`, `culture`, `economy`, `government`
+
+#### 6. Faction Types / Các kiểu Thế lực
+
+- ✅ Updated [`src/types/faction.ts`](../story-manager/src/types/faction.ts):
+  - Added `novelId: string` - Novel ID this faction belongs to
+  - Added `tags: string[]` - Array of tag IDs assigned to this faction
+  - Changed `FactionAttribute` to `FactionVersion`:
+    - Added `id: string` - Unique identifier for this version
+    - Changed `timeRange` to `validFrom: string | null` and `validTo: string | null`
+    - Changed `description` to `description: string` - Faction description
+    - Added `status: string` - Faction status (e.g., "Active", "Disbanded")
+    - Removed fields: `factionType`, `ideology`, `goals`, `resources`, `influence`, `members`, `leader`
+  - Added `members: FactionMembership[]` - Faction memberships:
+    - `FactionMembership` interface with `id`, `characterId`, `joinedDate: string | null`, `leftDate: string | null`, `notes`, `roles: FactionRole[]`
+  - Added `FactionRole` interface:
+    - `id: string` - Unique identifier for this role
+    - `validFrom: string | null` and `validTo: string | null`
+    - `roleName: string` - Role name (managed through Tags)
+
+#### 7. Tag Types / Các kiểu Tag
+
+- ✅ Created [`src/types/tag.ts`](../story-manager/src/types/tag.ts):
+  - `Tag` interface with `name`, `color` (hex), `novelId`
+  - `TaggableType` type: 'character' | 'event' | 'location' | 'faction' | 'faction-role'
+  - `EntityTag` interface for tag-entity relationships
+  - `TaggableType` constants: CHARACTER, EVENT, LOCATION, FACTION, FACTION_ROLE
+
+#### 8. TimeRange Types / Các kiểu Phạm vi thời gian
+
+- ✅ Updated [`src/types/common.ts`](../story-manager/src/types/common.ts):
+  - Changed `from: string` to `validFrom: string | null`
+  - Changed `to: string | null` to `validTo: string | null`
+  - Updated documentation to reflect SRS requirements:
+    - `null` means "from beginning of story" for `validFrom`
+    - `null` means "to present/future" for `validTo`
+
+#### 9. Entities Index / Chỉ mục Entities
+
+- ✅ Updated [`src/types/entities.ts`](../story-manager/src/types/entities.ts):
+  - Re-exported `TimeRange` from `./common`
+  - Re-exported `BaseEntity` from `./common`
+  - Re-exported all new types from individual files:
+    - `Novel`, `NovelSharing`, `NovelStatus`, `NovelSharingRole` from `./novel`
+    - `Character`, `CharacterVersion` from `./character`
+    - `Event`, `EventCharacter`, `EventFaction` from `./event`
+    - `Location`, `LocationVersion` from `./location`
+    - `Faction`, `FactionVersion`, `FactionMembership`, `FactionRole` from `./faction`
+    - `Relationship`, `RelationshipPeriod` from `./relationship`
+    - `Tag`, `TaggableType`, `EntityTag` from `./tag`
+  - Updated `Entity` union type to include `Novel`
+  - Added `EntityType.NOVEL` constant
+  - Kept `Timeline`, `TimelineEvent`, `EffectiveTimeState` for timeline features
+
+#### 10. Types Index / Chỉ mục Types
+
+- ✅ Updated [`src/types/index.ts`](../story-manager/src/types/index.ts):
+  - Re-exported all types from individual files and entities.ts
+  - Re-exported constants (NovelStatus, NovelSharingRole, TaggableType, EntityType)
+
+### Files Created / Các tệp đã tạo
+
+| File / Tệp                                                  | Description / Mô tả                                |
+| ----------------------------------------------------------- | -------------------------------------------------- |
+| [`src/types/novel.ts`](../story-manager/src/types/novel.ts) | Novel entity types / Các kiểu thực thể Tiểu thuyết |
+| [`src/types/tag.ts`](../story-manager/src/types/tag.ts)     | Tag entity types / Các kiểu thực thể Tag           |
+
+### Files Modified / Các tệp đã sửa
+
+| File / Tệp                                                                | Description / Mô tả                                                                                                                                                       |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`src/types/character.ts`](../story-manager/src/types/character.ts)       | Updated Character types with novelId, avatar, tags, and versioning / Đã cập nhật các kiểu Nhân vật với novelId, avatar, tags, và versioning                               |
+| [`src/types/relationship.ts`](../story-manager/src/types/relationship.ts) | Updated Relationship types with characterAId/characterBId, periods / Đã cập nhật các kiểu Mối quan hệ với characterAId/characterBId, periods                              |
+| [`src/types/event.ts`](../story-manager/src/types/event.ts)               | Updated Event types with novelId, startDate/endDate, characters, factions, tags / Đã cập nhật các kiểu Sự kiện với novelId, startDate/endDate, characters, factions, tags |
+| [`src/types/location.ts`](../story-manager/src/types/location.ts)         | Updated Location types with novelId, tags, and versioning / Đã cập nhật các kiểu Địa điểm với novelId, tags, và versioning                                                |
+| [`src/types/faction.ts`](../story-manager/src/types/faction.ts)           | Updated Faction types with novelId, tags, versioning, memberships, and roles / Đã cập nhật các kiểu Thế lực với novelId, tags, versioning, memberships, và roles          |
+| [`src/types/common.ts`](../story-manager/src/types/common.ts)             | Updated TimeRange with validFrom/validTo (nullable) / Đã cập nhật TimeRange với validFrom/validTo (nullable)                                                              |
+| [`src/types/entities.ts`](../story-manager/src/types/entities.ts)         | Re-exported all new types and added Novel to Entity union / Đã xuất lại tất cả các types mới và thêm Novel vào Entity union                                               |
+| [`src/types/index.ts`](../story-manager/src/types/index.ts)               | Re-exported all types from individual files / Đã xuất lại tất cả các types từ các file riêng biệt                                                                         |
+
+### Key Changes / Các thay đổi chính
+
+- **Novel**: New entity with ownership and sharing capabilities
+- **Character**: Added novelId, avatar, tags; changed to versioning model (CharacterVersion)
+- **Relationship**: Renamed fields to characterAId/characterBId, periods; removed status and strength
+- **Event**: Added novelId, startDate/endDate, characters with role/notes, factions, tags; removed obsolete fields
+- **Location**: Added novelId, tags; changed to versioning model (LocationVersion)
+- **Faction**: Added novelId, tags, versioning, memberships, and roles
+- **Tag**: New entity with color and novelId for categorization
+- **TimeRange**: Changed from/to to validFrom/validTo (nullable) for SRS compliance
+
+### Rules Followed / Các quy tắc đã tuân thủ
+
+- Bilingual comments (Vietnamese - English) / Comment song ngữ (Tiếng Việt - Tiếng Anh)
+- TypeScript with type safety / TypeScript với type safety
+- Preserved UI, colors, icon (không thay đổi trong Phase 1) / Giữ nguyên UI, màu sắc, icon (không thay đổi trong Phase 1)
+- Followed SRS.md requirements / Tuân thủ yêu cầu trong SRS.md
+
+### Final Result / Kết quả cuối cùng
+
+**Phase 1: New Data Structure** đã hoàn thành công!
+
+✅ Tất cả các types đã được định nghĩa lại theo SRS.md
+✅ Novel entity mới đã được tạo với ownership và sharing capabilities
+✅ Tag entity mới đã được tạo với color và novelId
+✅ Tất cả các entity hiện có đã được cập nhật với novelId, tags, và versioning
+✅ TimeRange đã được cập nhật với validFrom/validTo (nullable)
+✅ Tất cả types đã được export từ index.ts
+✅ Bilingual comments đã được áp dụng
+✅ TypeScript type safety đã được đảm bảo
+
+**Lưu ý / Note:**
+
+- Phase 1 chỉ tập trung vào cấu trúc dữ liệu (data structure), không thay đổi UI
+- Tất cả các types mới đã được định nghĩa đầy đủ với comments bilingual
+- Sẵn sàng cho Phase 2: Mock Data Mới
+
+**Tiếp theo / Next Steps:** Phase 2: Mock Data Mới
+
+---
+
 ## Phase 0: Foundation / Giai đoạn 0: Nền tảng
 
 **Date / Ngày:** 2026-01-16

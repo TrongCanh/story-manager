@@ -1,4 +1,21 @@
-# Project TODO / Danh sách Công việc Dự án
+> **⚠️ ARCHIVE / HISTORY FILE - TÀI LIỆU LỊCH SỬ**
+>
+> **English:** This file contains historical work records from previous business operations. It is preserved for reference purposes only.
+>
+> **Tiếng Việt:** File này chứa các bản ghi công việc lịch sử từ nghiệp vụ cũ. File được giữ lại để tham khảo.
+>
+> **📌 IMPORTANT / QUAN TRỌNG:**
+>
+> - **DO NOT** continue work based on the tasks listed in this file
+> - **KHÔNG** tiếp tục thực hiện các công việc liệt kê trong file này
+> - For current and future plans, please refer to: **[`docs/plans/`](story-manager/docs/plans/)**
+> - Để xem các kế hoạch hiện tại và tương lai, vui lòng tham khảo: **[`docs/plans/`](story-manager/docs/plans/)**
+>
+> **Last Archived / Lưu trữ lần cuối:** 2026-01-18
+>
+> ---
+
+# Project TODO / Danh sách Công việc Dự án (ARCHIVED / ĐÃ LƯU TRỮ)
 
 ## Project Overview / Tổng quan Dự án
 
@@ -764,4 +781,4 @@ Phase 1: App Shell & Layout - COMPLETED / Phase 2: Theme & i18n - COMPLETED / Ph
 
 ## Last Updated / Cập nhật lần cuối
 
-2026-01-17
+2026-01-18

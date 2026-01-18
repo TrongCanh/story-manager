@@ -5,42 +5,41 @@
  * Tệp này chứa các định nghĩa kiểu cho thực thể Địa điểm.
  */
 
-import type { BaseEntity, TimeRange } from './common';
+import type { BaseEntity } from './common';
 
 /**
  * Location entity / Thực thể Địa điểm
  *
- * Represents a location in the story world.
- * Đại diện cho một địa điểm trong thế giới câu chuyện.
+ * Represents a location in the story world with versioned attributes.
+ * Đại diện cho một địa điểm trong thế giới câu chuyện với các thuộc tính được phiên bản hóa.
  */
 export interface Location extends BaseEntity {
   /** Type of entity / Loại thực thể */
   type: 'location';
-  /** Time-based attributes / Các thuộc tính dựa trên thời gian */
-  attributes: LocationAttribute[];
+  /** Novel ID this location belongs to / ID tiểu thuyết mà địa điểm này thuộc về */
+  novelId: string;
+  /** Location versions with time-based attributes / Các phiên bản địa điểm với thuộc tính dựa trên thời gian */
+  versions: LocationVersion[];
+  /** Array of tag IDs assigned to this location / Mảng ID tag được gán cho địa điểm này */
+  tags: string[];
 }
 
 /**
- * Location attributes with time-based versioning
- * Thuộc tính địa điểm với phiên bản hóa dựa trên thời gian
+ * Location version with time-based attributes
+ * Phiên bản địa điểm với các thuộc tính dựa trên thời gian
+ *
+ * Represents a location's state during a specific time period.
+ * Đại diện cho trạng thái của địa điểm trong một khoảng thời gian cụ thể.
  */
-export interface LocationAttribute {
-  /** Time range for this attribute version / Phạm vi thời gian cho phiên bản thuộc tính này */
-  timeRange: TimeRange;
-  /** Location type / Loại địa điểm */
-  locationType: string;
-  /** Location climate / Khí hậu địa điểm */
-  climate: string;
-  /** Location geography / Địa lý địa điểm */
-  geography: string;
-  /** Location population / Dân số địa điểm */
-  population: string;
-  /** Location culture / Văn hóa địa điểm */
-  culture: string;
-  /** Location economy / Kinh tế địa điểm */
-  economy: string;
-  /** Location government / Chính quyền địa điểm */
-  government: string;
-  /** Location notes / Ghi chú địa điểm */
-  notes: string;
+export interface LocationVersion {
+  /** Unique identifier for this version / Định danh duy nhất cho phiên bản này */
+  id: string;
+  /** Valid from date (null = from beginning of story) / Ngày hiệu lực từ (null = từ đầu truyện) */
+  validFrom: string | null;
+  /** Valid to date (null = to present/future) / Ngày hiệu lực đến (null = đến hiện tại/tương lai) */
+  validTo: string | null;
+  /** Location description / Mô tả địa điểm */
+  description: string;
+  /** Location features/characteristics / Đặc điểm/đặc tính của địa điểm */
+  features: string;
 }

@@ -5,38 +5,43 @@
  * Tệp này chứa các định nghĩa kiểu cho thực thể Mối quan hệ.
  */
 
-import type { BaseEntity, TimeRange } from './common';
+import type { BaseEntity } from './common';
 
 /**
  * Relationship entity / Thực thể Mối quan hệ
  *
- * Represents a relationship between two entities.
- * Đại diện cho mối quan hệ giữa hai thực thể.
+ * Represents a relationship between two characters with time-based periods.
+ * Đại diện cho mối quan hệ giữa hai nhân vật với các khoảng thời gian dựa trên thời gian.
  */
 export interface Relationship extends BaseEntity {
   /** Type of entity / Loại thực thể */
   type: 'relationship';
-  /** First entity ID / ID thực thể thứ nhất */
-  entity1Id: string;
-  /** Second entity ID / ID thực thể thứ hai */
-  entity2Id: string;
-  /** Time-based relationship details / Chi tiết mối quan hệ dựa trên thời gian */
-  details: RelationshipDetail[];
+  /** First character ID (Character A) / ID nhân vật thứ nhất (Nhân vật A) */
+  characterAId: string;
+  /** Second character ID (Character B) / ID nhân vật thứ hai (Nhân vật B) */
+  characterBId: string;
+  /** Time-based relationship periods / Các khoảng thời gian mối quan hệ dựa trên thời gian */
+  periods: RelationshipPeriod[];
 }
 
 /**
- * Relationship details with time-based versioning
- * Chi tiết mối quan hệ với phiên bản hóa dựa trên thời gian
+ * Relationship period with time-based attributes
+ * Khoảng thời gian mối quan hệ với các thuộc tính dựa trên thời gian
+ *
+ * Represents a relationship state during a specific time period.
+ * Multiple periods can exist simultaneously between two characters.
+ * Đại diện cho trạng thái mối quan hệ trong một khoảng thời gian cụ thể.
+ * Nhiều khoảng thời gian có thể tồn tại đồng thời giữa hai nhân vật.
  */
-export interface RelationshipDetail {
-  /** Time range for this relationship version / Phạm vi thời gian cho phiên bản mối quan hệ này */
-  timeRange: TimeRange;
-  /** Relationship type / Loại mối quan hệ */
+export interface RelationshipPeriod {
+  /** Unique identifier for this period / Định danh duy nhất cho khoảng thời gian này */
+  id: string;
+  /** Relationship type (free text, e.g., "Friend", "Enemy", "Spouse", "Mentor") / Loại quan hệ (text tự do, ví dụ: "Bạn bè", "Kẻ thù", "Vợ chồng", "Sư đồ") */
   relationshipType: string;
-  /** Relationship description / Mô tả mối quan hệ */
+  /** Valid from date (null = from beginning of story) / Ngày hiệu lực từ (null = từ đầu truyện) */
+  validFrom: string | null;
+  /** Valid to date (null = to present/future) / Ngày hiệu lực đến (null = đến hiện tại/tương lai) */
+  validTo: string | null;
+  /** Description/notes about this relationship period / Mô tả/ghi chú về khoảng thời gian mối quan hệ này */
   description: string;
-  /** Relationship status / Trạng thái mối quan hệ */
-  status: 'active' | 'inactive' | 'complicated' | 'hostile' | 'allied';
-  /** Relationship strength / Mức độ mối quan hệ */
-  strength: number;
 }
