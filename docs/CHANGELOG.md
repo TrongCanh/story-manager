@@ -5,6 +5,157 @@ Tài liệu này ghi lại tất cả các thay đổi được thực hiện tr
 
 ---
 
+## Phase 2: New Mock Data / Giai đoạn 2: Dữ liệu Mock Mới
+
+**Date / Ngày:** 2026-01-18
+
+### User Request / Yêu cầu người dùng
+
+- Đọc file kế hoạch business-redesign-plan.md để triển khai Phase 2: New Mock Data
+- Tạo mock data mới theo cấu trúc types đã cập nhật trong Phase 1
+
+### What AI Did / Những gì AI đã làm
+
+#### 1. Novel Mock Data / Dữ liệu Mock Tiểu thuyết
+
+- ✅ Created `mockNovels` array in [`src/lib/mockData.ts`](../src/lib/mockData.ts):
+  - 2 novels: "The Shadow Conspiracy" (private) and "The Last Kingdom" (public)
+  - Each novel has: id, name, description, coverImage (null), owner, status, viewers, createdAt, updatedAt
+
+#### 2. Tag Mock Data / Dữ liệu Mock Tag
+
+- ✅ Created `mockTags` array in [`src/lib/mockData.ts`](../src/lib/mockData.ts):
+  - 8 tags for categorization:
+    - Protagonist (#10B981), Antagonist (#EF4444), Ally (#3B82F6), Mentor (#F59E0B) for novel-001
+    - Safe Location (#8B5CF6), Dangerous (#DC2626) for novel-001
+    - Hero (#10B981), Villain (#EF4444) for novel-002
+  - Each tag has: id, name, description, color, novelId, type, createdAt, updatedAt
+
+#### 3. Character Mock Data Update / Cập nhật Dữ liệu Mock Nhân vật
+
+- ✅ Updated `mockCharacters` in [`src/lib/mockData.ts`](../src/lib/mockData.ts):
+  - Added `novelId: 'novel-001'` to all characters
+  - Added `avatar: null` to all characters
+  - Added `tags: string[]` array (Protagonist, Ally, Mentor tags)
+  - Changed `attributes` to `versions` with new structure:
+    - `id: string` - Unique identifier for each version
+    - `validFrom: string | null` - Valid from date (null = from beginning)
+    - `validTo: string | null` - Valid to date (null = to present/future)
+    - `appearance: string` - Character's appearance description
+    - `personality: string` - Character's personality description
+    - `status: string` - Character's status ("Sống", "Chết", "Mất tích"...)
+    - `notes: string` - Additional notes
+  - Removed old fields: `role`, `age`, `gender`, `background`, `goals`, `flaws`, `skills`
+
+#### 4. Event Mock Data Update / Cập nhật Dữ liệu Mock Sự kiện
+
+- ✅ Updated `mockEvents` in [`src/lib/mockData.ts`](../src/lib/mockData.ts):
+  - Added `novelId: 'novel-001'` to all events
+  - Changed `name` to `title: string`
+  - Changed `timestamp` to `startDate: string | null` and `endDate: string | null`
+  - Changed `locationId: string | null` to `locations: string[]` (array of location IDs)
+  - Changed `participants: string[]` to `characters: EventCharacter[]`:
+    - `EventCharacter` with `characterId`, `role`, `notes`
+  - Added `factions: EventFaction[]`:
+    - `EventFaction` with `factionId`, `role`, `notes`
+  - Added `tags: string[]` array
+  - Removed old fields: `eventType`, `importance`, `outcome`, `impact`
+
+#### 5. Location Mock Data Update / Cập nhật Dữ liệu Mock Địa điểm
+
+- ✅ Updated `mockLocations` in [`src/lib/mockData.ts`](../src/lib/mockData.ts):
+  - Added `novelId: 'novel-001'` to all locations
+  - Added `tags: string[]` array (Safe Location, Dangerous tags)
+  - Changed `attributes` to `versions` with new structure:
+    - `id: string` - Unique identifier for each version
+    - `validFrom: string | null` - Valid from date
+    - `validTo: string | null` - Valid to date
+    - `description: string` - Location description
+    - `features: string` - Location features/characteristics
+  - Removed old fields: `locationType`, `climate`, `geography`, `population`, `culture`, `economy`, `government`
+
+#### 6. Faction Mock Data Update / Cập nhật Dữ liệu Mock Thế lực
+
+- ✅ Updated `mockFactions` in [`src/lib/mockData.ts`](../src/lib/mockData.ts):
+  - Added `novelId: 'novel-001'` to all factions
+  - Added `tags: string[]` array (Antagonist, Ally tags)
+  - Changed `attributes` to `versions` with new structure:
+    - `id: string` - Unique identifier for each version
+    - `validFrom: string | null` - Valid from date
+    - `validTo: string | null` - Valid to date
+    - `description: string` - Faction description
+    - `status: string` - Faction status ("Hoạt động", "Giải tán"...)
+  - Removed old fields: `factionType`, `ideology`, `goals`, `resources`, `influence`, `members`, `leader`
+  - Added `members: FactionMembership[]` array:
+    - `FactionMembership` with `id`, `characterId`, `joinedDate`, `leftDate`, `notes`, `roles`
+    - `roles: FactionRole[]` with `id`, `validFrom`, `validTo`, `roleName`
+
+#### 7. Relationship Mock Data Update / Cập nhật Dữ liệu Mock Mối quan hệ
+
+- ✅ Updated `mockRelationships` in [`src/lib/mockData.ts`](../src/lib/mockData.ts):
+  - Changed `entity1Id` to `characterAId: string`
+  - Changed `entity2Id` to `characterBId: string`
+  - Changed `details` to `periods: RelationshipPeriod[]`:
+    - `RelationshipPeriod` with `id`, `relationshipType`, `validFrom`, `validTo`, `description`
+  - Removed old fields: `status` (active/inactive/complicated/hostile/allied), `strength` (number)
+
+#### 8. Mock Data Export Update / Cập nhật Export Mock Data
+
+- ✅ Updated `mockData` export in [`src/lib/mockData.ts`](../src/lib/mockData.ts):
+  - Added `novels: mockNovels`
+  - Added `tags: mockTags`
+  - Kept existing exports: `characters`, `events`, `locations`, `factions`, `relationships`
+
+### Files Modified / Các tệp đã sửa
+
+| File / Tệp                                                                        | Description / Mô tả                                   |
+| --------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| [`src/lib/mockData.ts`](../src/lib/mockData.ts)                                   | Updated all mock data according to new type structure |
+| [`docs/plans/business-redesign-plan.md`](../docs/plans/business-redesign-plan.md) | Updated Phase 2 checkboxes to completed               |
+
+### Key Changes / Các thay đổi chính
+
+- **Novel**: New mock data with 2 novels (private/public)
+- **Tag**: New mock data with 8 tags for categorization
+- **Character**: Added novelId, avatar, tags; changed to versioning model (CharacterVersion)
+- **Event**: Added novelId, startDate/endDate, characters with role/notes, factions, tags
+- **Location**: Added novelId, tags; changed to versioning model (LocationVersion)
+- **Faction**: Added novelId, tags, versioning, memberships, and roles
+- **Relationship**: Renamed to characterAId/characterBId, periods; removed status and strength
+
+### Rules Followed / Các quy tắc đã tuân thủ
+
+- Bilingual comments (Vietnamese - English) / Comment song ngữ (Tiếng Việt - Tiếng Anh)
+- TypeScript with type safety / TypeScript với type safety
+- Followed SRS.md requirements / Tuân thủ yêu cầu trong SRS.md
+- Mock data follows new type structure from Phase 1 / Dữ liệu mock tuân thủ cấu trúc types mới từ Phase 1
+
+### Final Result / Kết quả cuối cùng
+
+**Phase 2: New Mock Data** đã hoàn thành công!
+
+✅ Novel mock data đã được tạo với 2 novels
+✅ Tag mock data đã được tạo với 8 tags
+✅ Character mock data đã được cập nhật với novelId, avatar, tags, và versioning
+✅ Event mock data đã được cập nhật với novelId, startDate/endDate, characters, factions, tags
+✅ Location mock data đã được cập nhật với novelId, tags, và versioning
+✅ Faction mock data đã được cập nhật với novelId, tags, versioning, memberships, và roles
+✅ Relationship mock data đã được cập nhật với characterAId/characterBId, periods
+✅ Mock data export đã được cập nhật với novels và tags
+✅ TypeScript compilation passed successfully
+✅ Bilingual comments đã được áp dụng
+✅ Kế hoạch business-redesign-plan.md đã được cập nhật
+
+**Lưu ý / Note:**
+
+- Phase 2 chỉ tập trung vào cập nhật mock data theo cấu trúc types mới từ Phase 1
+- Tất cả mock data tuân thủ cấu trúc types đã định nghĩa trong Phase 1
+- Sẵn sàng cho Phase 3: Update DataContext
+
+**Tiếp theo / Next Steps:** Phase 3: Update DataContext
+
+---
+
 ## Phase 1: New Data Structure / Giai đoạn 1: Cấu Trúc Dữ Liệu Mới
 
 **Date / Ngày:** 2026-01-18

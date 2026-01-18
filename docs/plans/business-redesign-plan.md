@@ -693,13 +693,13 @@ Create new mock data according to updated type structure.
 
 #### 2.1 Tạo Novel Mock Data / Create Novel Mock Data
 
-- [ ] Cập nhật `src/lib/mockData.ts`
+- [x] Cập nhật `src/lib/mockData.ts`
   - Thêm `novels: Novel[]`
   - Tạo 1-2 novels mẫu với đầy đủ thông tin
 
 #### 2.2 Cập nhật Character Mock Data / Update Character Mock Data
 
-- [ ] Cập nhật mock data cho Characters
+- [x] Cập nhật mock data cho Characters
   - Thêm `novelId` cho mỗi character
   - Thêm `avatar` URLs
   - Thêm `tags`
@@ -707,7 +707,7 @@ Create new mock data according to updated type structure.
 
 #### 2.3 Cập nhật Event Mock Data / Update Event Mock Data
 
-- [ ] Cập nhật mock data cho Events
+- [x] Cập nhật mock data cho Events
   - Thêm `novelId`
   - Thay đổi thành `startDate`, `endDate`
   - Thay `locationId` thành `locationIds`
@@ -717,14 +717,14 @@ Create new mock data according to updated type structure.
 
 #### 2.4 Cập nhật Location Mock Data / Update Location Mock Data
 
-- [ ] Cập nhật mock data cho Locations
+- [x] Cập nhật mock data cho Locations
   - Thêm `novelId`
   - Thêm `tags`
   - Cập nhật `attributes` theo cấu trúc mới
 
 #### 2.5 Cập nhật Faction Mock Data / Update Faction Mock Data
 
-- [ ] Cập nhật mock data cho Factions
+- [x] Cập nhật mock data cho Factions
   - Thêm `novelId`
   - Thêm `tags`
   - Cập nhật `attributes` theo cấu trúc mới
@@ -732,8 +732,10 @@ Create new mock data according to updated type structure.
 
 #### 2.6 Tạo Tag Mock Data / Create Tag Mock Data
 
-- [ ] Thêm `tags: Tag[]` vào mockData
+- [x] Thêm `tags: Tag[]` vào mockData
   - Tạo tags mẫu cho các entities
+
+**Phase 2 Status:** ✅ **COMPLETED / ĐÃ HOÀN THÀNH** (2026-01-18)
 
 ---
 
