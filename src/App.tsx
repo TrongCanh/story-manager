@@ -10,6 +10,9 @@ import EventDetailPage from './app/events/EventDetailPage';
 import EventCreatePage from './app/events/EventCreatePage';
 import EventEditPage from './app/events/EventEditPage';
 import LocationsPage from './app/locations/LocationsPage';
+import LocationDetailPage from './app/locations/LocationDetailPage';
+import LocationCreatePage from './app/locations/LocationCreatePage';
+import LocationEditPage from './app/locations/LocationEditPage';
 import FactionsPage from './app/factions/FactionsPage';
 import RelationshipsPage from './app/relationships/RelationshipsPage';
 import TimelinePage from './app/timeline/TimelinePage';
@@ -31,6 +34,9 @@ import NotFoundPage from './app/NotFoundPage';
  * - /events/:id: EventDetailPage (Phase 5)
  * - /events/:id/edit: EventEditPage (Phase 5)
  * - /locations: LocationsPage (Phase 6)
+ * - /locations/create: LocationCreatePage (Phase 6)
+ * - /locations/:id: LocationDetailPage (Phase 6)
+ * - /locations/:id/edit: LocationEditPage (Phase 6)
  * - /factions: FactionsPage (Phase 7)
  * - /relationships: RelationshipsPage (Phase 8)
  * - /timeline: TimelinePage (Phase 9)
@@ -60,6 +66,9 @@ function App() {
           <Route path="events/:id" element={<EventDetailPage />} />
           <Route path="events/:id/edit" element={<EventEditPage />} />
           <Route path="locations" element={<LocationsPage />} />
+          <Route path="locations/create" element={<LocationCreatePage />} />
+          <Route path="locations/:id" element={<LocationDetailPage />} />
+          <Route path="locations/:id/edit" element={<LocationEditPage />} />
           <Route path="factions" element={<FactionsPage />} />
           <Route path="relationships" element={<RelationshipsPage />} />
 

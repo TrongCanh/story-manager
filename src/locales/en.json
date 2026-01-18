@@ -110,6 +110,33 @@
       "critical": "Critical"
     }
   },
+  "locations": {
+    "title": "Locations",
+    "subtitle": "Location Management",
+    "description": "Manage your story locations with time-based attributes. Track location types, climate, geography, and cultural evolution across your narrative timeline.",
+    "list": "Location List",
+    "details": "Location Details",
+    "create": "Create Location",
+    "edit": "Edit Location",
+    "delete": "Delete Location",
+    "search": "Search locations...",
+    "noLocations": "No locations found",
+    "attributes": {
+      "locationType": "Location Type",
+      "climate": "Climate",
+      "geography": "Geography",
+      "population": "Population",
+      "culture": "Culture",
+      "economy": "Economy",
+      "government": "Government",
+      "notes": "Notes"
+    },
+    "timeRange": "Time Range",
+    "from": "From",
+    "to": "To",
+    "current": "Current",
+    "confirmDelete": "Are you sure you want to delete this location?"
+  },
   "notFound": {
     "title": "404 - Page Not Found",
     "message": "The page you're looking for doesn't exist.",

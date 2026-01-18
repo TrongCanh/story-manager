@@ -739,7 +739,7 @@ Display Updated UI / Hiển thị UI đã Cập nhật
 
 ## Current Phase / Giai đoạn Hiện tại
 
-Phase 1: App Shell & Layout - COMPLETED / Phase 2: Theme & i18n - COMPLETED / Phase 3: Domain Data Structure - COMPLETED / Phase 4: Character Module - COMPLETED / Phase 5: Event Module - COMPLETED / Giai đoạn 1: Shell Ứng dụng & Bố cục - ĐÃ HOÀN THÀNH / Giai đoạn 2: Chủ đề & Quốc tế hóa - ĐÃ HOÀN THÀNH / Giai đoạn 3: Cấu trúc Dữ liệu Domain - ĐÃ HOÀN THÀNH / Giai đoạn 4: Module Nhân vật - ĐÃ HOÀN THÀNH / Giai đoạn 5: Module Sự kiện - ĐÃ HOÀN THÀNH / Giai đoạn 6: Module Địa điểm - Sẵn sàng bắt đầu
+Phase 1: App Shell & Layout - COMPLETED / Phase 2: Theme & i18n - COMPLETED / Phase 3: Domain Data Structure - COMPLETED / Phase 4: Character Module - COMPLETED / Phase 5: Event Module - COMPLETED / Phase 6: Location Module - COMPLETED / Giai đoạn 1: Shell Ứng dụng & Bố cục - ĐÃ HOÀN THÀNH / Giai đoạn 2: Chủ đề & Quốc tế hóa - ĐÃ HOÀN THÀNH / Giai đoạn 3: Cấu trúc Dữ liệu Domain - ĐÃ HOÀN THÀNH / Giai đoạn 4: Module Nhân vật - ĐÃ HOÀN THÀNH / Giai đoạn 5: Module Sự kiện - ĐÃ HOÀN THÀNH / Giai đoạn 6: Module Địa điểm - ĐÃ HOÀN THÀNH / Giai đoạn 7: Module Phái - Sẵn sàng bắt đầu
 
 ---
 

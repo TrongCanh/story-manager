@@ -110,6 +110,33 @@
       "critical": "Quan trọng"
     }
   },
+  "locations": {
+    "title": "Địa điểm",
+    "subtitle": "Quản lý Địa điểm",
+    "description": "Quản lý địa điểm câu chuyện với các thuộc tính dựa trên thời gian. Theo dõi loại địa điểm, khí hậu, địa lý và sự phát triển văn hóa trên dòng thời gian kể chuyện.",
+    "list": "Danh sách Địa điểm",
+    "details": "Chi tiết Địa điểm",
+    "create": "Tạo Địa điểm",
+    "edit": "Sửa Địa điểm",
+    "delete": "Xóa Địa điểm",
+    "search": "Tìm kiếm địa điểm...",
+    "noLocations": "Không tìm thấy địa điểm",
+    "attributes": {
+      "locationType": "Loại địa điểm",
+      "climate": "Khí hậu",
+      "geography": "Địa lý",
+      "population": "Dân số",
+      "culture": "Văn hóa",
+      "economy": "Kinh tế",
+      "government": "Chính quyền",
+      "notes": "Ghi chú"
+    },
+    "timeRange": "Phạm vi thời gian",
+    "from": "Từ",
+    "to": "Đến",
+    "current": "Hiện tại",
+    "confirmDelete": "Bạn có chắc chắn muốn xóa địa điểm này không?"
+  },
   "notFound": {
     "title": "404 - Không tìm thấy trang",
     "message": "Trang bạn đang tìm kiếm không tồn tại.",

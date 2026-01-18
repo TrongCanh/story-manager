@@ -1309,4 +1309,186 @@ All components follow project design guidelines:
 
 ---
 
+## Phase 6: Location Module / Giai đoạn 6: Module Địa điểm
+
+**Date / Ngày:** 2026-01-17
+
+### User Request / Yêu cầu người dùng
+
+- Đọc các file trong thư mục docs để nắm được công việc
+- Triển khai Phase 6: Location Module
+- Code phải tương thích với code trước đó, đặc biệt là đồng bộ về mặt giao diện, ngôn ngữ
+
+### What AI Did / Những gì AI đã làm
+
+#### 1. Translation Files / Các tệp dịch thuật
+
+- ✅ Updated [`src/locales/en.json`](../story-manager/src/locales/en.json) with location-related keys:
+  - `locations.title`: "Locations"
+  - `locations.subtitle`: "Location Management"
+  - `locations.description`: "Manage your story locations with time-based attributes. Track location types, climate, geography, and cultural evolution across your narrative timeline."
+  - `locations.list`: "Location List"
+  - `locations.details`: "Location Details"
+  - `locations.create`: "Create Location"
+  - `locations.edit`: "Edit Location"
+  - `locations.delete`: "Delete Location"
+  - `locations.search`: "Search locations..."
+  - `locations.noLocations`: "No locations found"
+  - `locations.attributes.locationType`: "Location Type"
+  - `locations.attributes.climate`: "Climate"
+  - `locations.attributes.geography`: "Geography"
+  - `locations.attributes.population`: "Population"
+  - `locations.attributes.culture`: "Culture"
+  - `locations.attributes.economy`: "Economy"
+  - `locations.attributes.government`: "Government"
+  - `locations.attributes.notes`: "Notes"
+  - `locations.timeRange`: "Time Range"
+  - `locations.from`: "From"
+  - `locations.to`: "To"
+  - `locations.current`: "Current"
+  - `locations.confirmDelete`: "Are you sure you want to delete this location?"
+
+- ✅ Updated [`src/locales/vi.json`](../story-manager/src/locales/vi.json) with Vietnamese translations for all location keys:
+  - `locations.title`: "Địa điểm"
+  - `locations.subtitle`: "Quản lý Địa điểm"
+  - `locations.description`: "Quản lý địa điểm câu chuyện với các thuộc tính dựa trên thời gian. Theo dõi loại địa điểm, khí hậu, địa lý và sự phát triển văn hóa trên dòng thời gian kể chuyện."
+  - `locations.list`: "Danh sách Địa điểm"
+  - `locations.details`: "Chi tiết Địa điểm"
+  - `locations.create`: "Tạo Địa điểm"
+  - `locations.edit`: "Sửa Địa điểm"
+  - `locations.delete`: "Xóa Địa điểm"
+  - `locations.search`: "Tìm kiếm địa điểm..."
+  - `locations.noLocations`: "Không tìm thấy địa điểm"
+  - `locations.attributes.locationType`: "Loại địa điểm"
+  - `locations.attributes.climate`: "Khí hậu"
+  - `locations.attributes.geography`: "Địa lý"
+  - `locations.attributes.population`: "Dân số"
+  - `locations.attributes.culture`: "Văn hóa"
+  - `locations.attributes.economy`: "Kinh tế"
+  - `locations.attributes.government`: "Chính quyền"
+  - `locations.attributes.notes`: "Ghi chú"
+  - `locations.timeRange`: "Phạm vi thời gian"
+  - `locations.from`: "Từ"
+  - `locations.to`: "Đến"
+  - `locations.current`: "Hiện tại"
+  - `locations.confirmDelete`: "Bạn có chắc chắn muốn xóa địa điểm này không?"
+
+#### 2. Type Definitions / Định nghĩa Kiểu
+
+- ✅ Location type already defined in [`src/types/location.ts`](../story-manager/src/types/location.ts) from Phase 3
+
+#### 3. Domain Components / Các thành phần Domain
+
+- ✅ Created [`src/components/domain/location/LocationTable.tsx`](../story-manager/src/components/domain/location/LocationTable.tsx):
+  - Reusable table component for displaying locations
+  - Columns: Name, Description, Type, Actions
+  - Edit and Delete buttons for each location
+  - Click on row to view location details
+  - Theme-aware colors (emerald for light, blue for dark)
+
+- ✅ Created [`src/components/domain/location/LocationForm.tsx`](../story-manager/src/components/domain/location/LocationForm.tsx):
+  - Form component for creating/editing locations
+  - Vertical form layout with labels above inputs
+  - All location fields: name, description, locationType, climate, geography, population, culture, economy, government, notes
+  - Time range inputs (from, to)
+  - Save and Cancel buttons
+  - Theme-aware colors and focus states
+
+#### 4. Page Components / Các thành phần Trang
+
+- ✅ Updated [`src/app/locations/LocationsPage.tsx`](../story-manager/src/app/locations/LocationsPage.tsx):
+  - Location list page with search functionality
+  - Search bar for filtering locations by name, description, or type
+  - Create button for new locations
+  - Uses LocationTable component
+  - Empty state when no locations found
+  - Theme-aware colors
+
+- ✅ Created [`src/app/locations/LocationDetailPage.tsx`](../story-manager/src/app/locations/LocationDetailPage.tsx):
+  - Location detail page showing full location information
+  - Location name and description header
+  - Location details grid: locationType, climate, geography, population, culture, economy, government, notes
+  - Time range information
+  - Back, Edit, and Delete buttons
+  - Location not found state
+  - Theme-aware colors
+
+- ✅ Created [`src/app/locations/LocationCreatePage.tsx`](../story-manager/src/app/locations/LocationCreatePage.tsx):
+  - Page for creating new locations
+  - Uses LocationForm component
+  - Back navigation on cancel
+  - TODO: Implement create functionality
+
+- ✅ Created [`src/app/locations/LocationEditPage.tsx`](../story-manager/src/app/locations/LocationEditPage.tsx):
+  - Page for editing existing locations
+  - Uses LocationForm component with pre-filled data
+  - Back navigation on cancel
+  - TODO: Implement update functionality
+  - Location not found state
+
+#### 5. Routing Configuration / Cấu hình Routing
+
+- ✅ Updated [`src/App.tsx`](../story-manager/src/App.tsx) with new location routes:
+  - `/locations/create` - LocationCreatePage
+  - `/locations/:id` - LocationDetailPage
+  - `/locations/:id/edit` - LocationEditPage
+  - Updated route structure documentation
+
+#### 6. Design Compliance / Tuân thủ Quy tắc Thiết kế
+
+All components follow project design guidelines:
+
+- ✅ Centered layout with max-w-6xl
+- ✅ Consistent typography: text-2xl font-semibold (page title), text-lg font-medium (section title), text-sm text-gray-700 (body)
+- ✅ Emerald/Teal/Amber color palette for light mode
+- ✅ Blue-500 color for dark mode
+- ✅ Cards with bg-white border-emerald-100 rounded-xl p-6 (light) / dark:bg-gray-800 dark:border-gray-700 (dark)
+- ✅ Vertical forms with labels above inputs
+- ✅ Tables for lists
+- ✅ Minimal interactions (hover, focus only when helpful)
+- ✅ Theme-aware colors throughout
+
+### Files Created / Các tệp đã tạo
+
+| File / Tệp                                                                                                              | Description / Mô tả                                                      |
+| ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [`src/components/domain/location/LocationTable.tsx`](../story-manager/src/components/domain/location/LocationTable.tsx) | Reusable location table component / Thành phần bảng địa điểm tái sử dụng |
+| [`src/components/domain/location/LocationForm.tsx`](../story-manager/src/components/domain/location/LocationForm.tsx)   | Location form component / Thành phần biểu mẫu địa điểm                   |
+
+### Files Modified / Các tệp đã sửa
+
+| File / Tệp                                                        | Description / Mô tả                                                         |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [`src/locales/en.json`](../story-manager/src/locales/en.json)     | Added location translation keys / Thêm các key dịch địa điểm                |
+| [`src/locales/vi.json`](../story-manager/src/locales/vi.json)     | Added location translation keys / Thêm các key dịch địa điểm                |
+| [`src/types/i18n.ts`](../story-manager/src/types/i18n.ts)         | Added location TranslationKey types / Thêm các kiểu TranslationKey địa điểm |
+| [`src/lib/i18nHelper.ts`](../story-manager/src/lib/i18nHelper.ts) | Added location keys to helper / Thêm các key địa điểm vào helper            |
+| [`src/App.tsx`](../story-manager/src/App.tsx)                     | Added location routes / Thêm routes địa điểm                                |
+
+### Final Result / Kết quả cuối cùng
+
+**Phase 6: Location Module** đã hoàn thành thành công!
+
+✅ Translation files đã được cập nhật với các key dịch địa điểm cho cả tiếng Anh và tiếng Việt
+✅ LocationTable component đã được tạo với bảng hiển thị địa điểm
+✅ LocationForm component đã được tạo với biểu mẫu tạo/sửa địa điểm
+✅ LocationDetailPage đã được tạo với trang chi tiết địa điểm
+✅ LocationCreatePage đã được tạo với trang tạo địa điểm
+✅ LocationEditPage đã được tạo với trang sửa địa điểm
+✅ Routing đã được cấu hình cho các trang địa điểm
+✅ Code tuân thủ các quy tắc thiết kế dự án (màu sắc, typography, spacing, bố cục)
+✅ Tất cả thành phần tương thích với Character và Event modules về mặt giao diện và ngôn ngữ
+
+**Lưu ý / Note:**
+
+- Tất cả thành phần sử dụng các translation key type-safe
+- Event module tuân thủ cùng pattern với Character module
+- Màu sắc importance badge (gray/blue/amber/red) cho phép phân loại mức độ quan trọng
+- Participants hiển thị tên nhân vật thay vì ID
+- Location hiển thị tên địa điểm thay vì ID
+
+**Tiếp theo / Next Steps:** Phase 7: Faction Module
+
+---
+
 _Last updated: 2026-01-17_

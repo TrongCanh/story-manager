@@ -115,6 +115,31 @@ export type TranslationKey =
   | 'events.importanceLevels.high'
   | 'events.importanceLevels.critical'
 
+  // Locations keys / Các key Địa điểm
+  | 'locations.title'
+  | 'locations.subtitle'
+  | 'locations.description'
+  | 'locations.list'
+  | 'locations.details'
+  | 'locations.create'
+  | 'locations.edit'
+  | 'locations.delete'
+  | 'locations.search'
+  | 'locations.noLocations'
+  | 'locations.attributes.locationType'
+  | 'locations.attributes.climate'
+  | 'locations.attributes.geography'
+  | 'locations.attributes.population'
+  | 'locations.attributes.culture'
+  | 'locations.attributes.economy'
+  | 'locations.attributes.government'
+  | 'locations.attributes.notes'
+  | 'locations.timeRange'
+  | 'locations.from'
+  | 'locations.to'
+  | 'locations.current'
+  | 'locations.confirmDelete'
+
   // Not Found keys / Các key Không tìm thấy
   | 'notFound.title'
   | 'notFound.message'
@@ -221,6 +246,29 @@ export function isValidTranslationKey(key: string): key is TranslationKey {
     'events.importanceLevels.medium',
     'events.importanceLevels.high',
     'events.importanceLevels.critical',
+    'locations.title',
+    'locations.subtitle',
+    'locations.description',
+    'locations.list',
+    'locations.details',
+    'locations.create',
+    'locations.edit',
+    'locations.delete',
+    'locations.search',
+    'locations.noLocations',
+    'locations.attributes.locationType',
+    'locations.attributes.climate',
+    'locations.attributes.geography',
+    'locations.attributes.population',
+    'locations.attributes.culture',
+    'locations.attributes.economy',
+    'locations.attributes.government',
+    'locations.attributes.notes',
+    'locations.timeRange',
+    'locations.from',
+    'locations.to',
+    'locations.current',
+    'locations.confirmDelete',
     'notFound.title',
     'notFound.message',
     'notFound.goHome',
